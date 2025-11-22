@@ -1,0 +1,31 @@
+---
+import gedung from "../assets/gedung.png"
+---
+// Hero Section Beranda
+<section class="relative w-full h-[90vh] flex items-center justify-center bg-gray-900 text-white">
+  
+  <!-- Background Image (Gedung) -->
+  <img src={gedung.src} class="absolute inset-0 w-full h-full object-cover opacity-70"/>
+
+  <!-- Overlay -->
+  <div class="absolute inset-0 bg-black/40"></div>
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-4xl mx-auto text-center px-4">
+    <h1 class="text-5xl md:text-6xl font-extrabold leading-tight">
+      Teknik<br /> Informatika
+    </h1>
+
+    <p class="mt-6 text-lg md:text-xl max-w-2xl mx-auto text-gray-200">
+      Teknik Informatika UIN Suska Riau merupakan salah satu program studi unggulan 
+      yang berada di bawah Fakultas Sains dan Teknologi.
+    </p>
+
+    <a 
+      href="/profil"
+      class="inline-block mt-8 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition"
+    >
+      LIHAT
+    </a>
+  </div>
+</section>
