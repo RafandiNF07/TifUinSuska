@@ -92,37 +92,36 @@ const quickLinks = [
     </div>
 
     <!-- logo uin -->
+    <!-- Wrapper utama untuk logo + hubungi kami -->
     <div
-      class="flex items-center justify-center py-6 border-b border-gray-700/50"
+      class="flex flex-col md:flex-row justify-center items-center gap-16 py-6 border-b border-gray-700/50"
     >
+      <!-- Logo + teks branding -->
       <div class="flex items-center gap-3">
         <img
           src={logoImage.src}
           alt="Logo UIN Suska Riau"
-          class="h-10 w-auto"
+          class="h-12 w-auto"
         />
         <div class="text-left">
-          <h4 class="text-lg font-semibold text-white whitespace-nowrap">
+          <h4 class="text-lg font-semibold text-white">
             UIN Sultan Syarif Kasim Riau
           </h4>
-          <h4 class={`text-xl font-bold ${TEXT_ACCENT}`}>Teknik Informatika</h4>
+          <p class={`text-sm font-bold ${TEXT_ACCENT}`}>Teknik Informatika</p>
         </div>
       </div>
-    </div>
 
-    <!-- 3 kolom dibawah logo -->
-    <div
-      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 text-sm pt-4"
-    >
-      <!-- kolom 1 -->
-      <div>
-        <h3 class="text-base font-bold mb-4 text-white">Hubungi Kami</h3>
+      <!-- Hubungi Kami -->
+      <!-- Hubungi Kami -->
+      <div class="flex flex-col gap-2 max-w-xs text-center md:text-left">
+        <h3 class="text-base font-bold mb-1 text-white">Hubungi Kami</h3>
 
+        <!-- Alamat -->
         <div
-          class="flex items-start text-xs leading-relaxed mb-3 text-gray-400"
+          class="flex items-start gap-2 w-full justify-center md:justify-start"
         >
           <svg
-            class={`w-4 h-4 mr-2 mt-1 shrink-0 ${TEXT_ACCENT}`}
+            class={`w-4 h-4 mt-1 shrink-0 ${TEXT_ACCENT}`}
             fill="currentColor"
             viewBox="0 0 24 24"
           >
@@ -130,12 +129,13 @@ const quickLinks = [
               d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"
             ></path>
           </svg>
-          <p>{contactInfo.address}</p>
+          <p class="text-xs leading-relaxed">{contactInfo.address}</p>
         </div>
 
-        <div class="flex items-center text-xs text-gray-400">
+        <!-- Email -->
+        <div class="flex items-center gap-2 justify-center md:justify-start">
           <svg
-            class={`w-4 h-4 mr-2 shrink-0 ${TEXT_ACCENT}`}
+            class={`w-4 h-4 shrink-0 ${TEXT_ACCENT}`}
             fill="currentColor"
             viewBox="0 0 24 24"
           >
@@ -151,7 +151,12 @@ const quickLinks = [
           </a>
         </div>
       </div>
+    </div>
 
+    <!-- 3 kolom dibawah logo -->
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 text-sm pt-4"
+    >
       <!-- kolom 2 -->
       <div>
         <h3 class="text-base font-bold mb-4 text-white">Visi Keilmuan</h3>
@@ -176,21 +181,20 @@ const quickLinks = [
           }
         </ul>
       </div>
-    </div>
-    <!-- Quick Link -->
-    <div class="md:col-span-1 justify-center text-center">
-      <h3 class="text-base font-bold mb-4 text-white">Quick Link</h3>
-      <div class="flex flex-wrap gap-2 text-xs justify-center text-gray-400">
-        {
-          quickLinks.map((item, idx) => (
-            <>
-              <a href={item.href} class={`${PRIMARY_COLOR_HOVER}`}>
-                {item.text}
-              </a>
-              {idx < quickLinks.length - 1 && <span>|</span>}
-            </>
-          ))
-        }
+      <!-- Quick Link -->
+      <div>
+        <h3 class="text-base font-bold mb-4 text-white">Quick Link</h3>
+        <ul class="space-y-3 text-xs text-gray-400">
+          {
+            quickLinks.map((item) => (
+              <li>
+                <a href={item.href} class={PRIMARY_COLOR_HOVER}>
+                  {item.text}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
       </div>
     </div>
   </div>
