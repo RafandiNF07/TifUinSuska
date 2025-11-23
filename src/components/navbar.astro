@@ -1,39 +1,61 @@
 ---
 import logoImage from "../assets/logo.png";
+// Definisi Warna
+const PRIMARY_COLOR_HOVER = "hover:text-green-600";
+const TEXT_COLOR = "text-gray-700";
+const ACTIVE_COLOR = "text-green-600 border-b-2 border-green-600 pb-1"; // Gaya link aktif ala UIB
 ---
-// Navbar TIF UIN Suska
-<nav class="w-full bg-white shadow-sm fixed top-0 left-0 z-50">
-  <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
-    
-    <!-- Logo -->
-    <a href="/beranda" class="flex items-center gap-2">
-      <img src={logoImage.src} alt="Logo TIF" class="w-10 h-10" />
-      <span class="text-lg font-semibold">Teknik Informatika</span>
-    </a>
 
-    <!-- Menu Desktop -->
-    <ul class="hidden md:flex gap-6 font-medium text-gray-700">
-      <li><a href="/beranda" class="hover:text-blue-600">Beranda</a></li>
+<nav class="w-full bg-white shadow-md fixed top-0 left-0 z-50">
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4"> 
+        <a href="/beranda" class="flex items-center gap-3 font-sans"> 
+      <img src={logoImage.src} alt="Logo TIF" class="w-10 h-10" />
+            <span class="text-xl font-bold text-green-700">Teknik Informatika</span> 
+    </a>
 
-      <li class="group relative cursor-pointer">
-        <span class="hover:text-blue-600">Profil ▾</span>
-        <div class="absolute hidden group-hover:block bg-white shadow-md rounded p-3 w-40">
-          <a href="/profil" class="block py-1 hover:text-blue-600">Profil</a>
-          <a href="/about" class="block py-1 hover:text-blue-600">Tentang TIF</a>
-        </div>
-      </li>
+        <ul class={`hidden md:flex gap-12 font-semibold ${TEXT_COLOR} font-sans flex-1 justify-center`}>
+      
+            <li class={ACTIVE_COLOR}> 
+        <a href="/beranda">Beranda</a> 
+      </li>
+      
+            <li class="group relative cursor-pointer">
+        <span class={`${PRIMARY_COLOR_HOVER} flex items-center gap-1`}>
+           Profil
+          <svg class="w-3 h-3 text-gray-400 group-hover:text-green-600 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </span>
 
-      <li class="group relative cursor-pointer">
-        <span class="hover:text-blue-600">Akademik ▾</span>
-        <div class="absolute hidden group-hover:block bg-white shadow-md rounded p-3 w-40">
-          <a href="/akademik" class="block py-1 hover:text-blue-600">Informasi Akademik</a>
-        </div>
-      </li>
+                <div class="absolute hidden group-hover:block bg-white shadow-xl rounded-md mt-2 p-3 w-48 border border-gray-100 z-50">
+          <a href="/profil" class={`block py-2 ${PRIMARY_COLOR_HOVER} text-sm font-normal`}>Profil</a>
+          <a href="/about" class={`block py-2 ${PRIMARY_COLOR_HOVER} text-sm font-normal`}>Tentang TIF</a>
+        </div>
+      </li>
 
-      <li><a href="/penelitian" class="hover:text-blue-600">Penelitian</a></li>
-      <li><a href="/berita" class="hover:text-blue-600">Berita</a></li>
-      <li><a href="/agenda" class="hover:text-blue-600">Agenda</a></li>
-      <li><a href="/alumni" class="hover:text-blue-600">Alumni</a></li>
-    </ul>
-  </div>
+            <li class="group relative cursor-pointer">
+        <span class={`${PRIMARY_COLOR_HOVER} flex items-center gap-1`}>
+            Akademik
+          <svg class="w-3 h-3 text-gray-400 group-hover:text-green-600 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </span>
+        <div class="absolute hidden group-hover:block bg-white shadow-xl rounded-md mt-2 p-3 w-48 border border-gray-100 z-50">
+          <a href="/akademik" class={`block py-2 ${PRIMARY_COLOR_HOVER} text-sm font-normal`}>Informasi Akademik</a>
+        </div>
+      </li>
+
+            <li><a href="/penelitian" class={PRIMARY_COLOR_HOVER}>Penelitian</a></li>
+      <li><a href="/berita" class={PRIMARY_COLOR_HOVER}>Berita</a></li>
+      <li><a href="/agenda" class={PRIMARY_COLOR_HOVER}>Agenda</a></li>
+      <li><a href="/alumni" class={PRIMARY_COLOR_HOVER}>Alumni</a></li>
+      
+    </ul>
+
+        <button class="md:hidden text-gray-700 hover:text-green-600">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path d="M4 6h16M4 12h16m-7 6h7" />
+      </svg>
+    </button>
+  </div>
 </nav>

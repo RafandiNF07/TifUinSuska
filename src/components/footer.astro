@@ -1,0 +1,60 @@
+---
+// Definisi Warna Hover agar konsisten
+const PRIMARY_COLOR_HOVER = "hover:text-green-400"; // Menggunakan hijau muda agar menonjol di background gelap
+const DARK_BG = "bg-gray-900"; 
+const TEXT_LIGHT = "text-gray-300";
+const TEXT_ACCENT = "text-green-500";
+---
+
+<footer class={`${DARK_BG} ${TEXT_LIGHT} py-16 md:py-20`}>
+  <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-10">
+    
+        <div>
+      <h3 class="text-lg font-bold mb-5 text-white">Kontak</h3>
+      <p class="text-sm leading-relaxed">
+        Jurusan Teknik Informatika<br>
+        Gedung Fakultas Sains & Teknologi UIN Suska Riau<br>
+        Jl. HR. Soebrantas No.155 KM 18, Simpang Baru Panam, Pekanbaru 28293
+      </p>
+      <p class="mt-4 text-sm">
+        Email: <a href="mailto:tif@uin-suska.ac.id" class={`${TEXT_ACCENT} ${PRIMARY_COLOR_HOVER}`}>tif@uin-suska.ac.id</a>
+      </p>
+    </div>
+
+        <div>
+      <h3 class="text-lg font-bold mb-5 text-white">Visi Keilmuan</h3>
+      <p class="text-sm leading-relaxed">
+        Menjadi Program Studi Teknik Informatika yang unggul dalam bidang Data Analytics dan Software Development yang mengintegrasikan Informatika dan Islam di Indonesia pada tahun 2025.
+      </p>
+    </div>
+
+        <div>
+      <h3 class="text-lg font-bold mb-5 text-white">Berita Terbaru</h3>
+      <ul class="space-y-3 text-sm">
+        <li><a href="#" class={PRIMARY_COLOR_HOVER}>Penerimaan Mahasiswa Baru Jalur SMMPTN-Barat 2025</a></li>
+        <li><a href="#" class={PRIMARY_COLOR_HOVER}>Perpanjangan Waktu Pembayaran UKT Mahasiswa Baru...</a></li>
+        <li><a href="#" class={PRIMARY_COLOR_HOVER}>Teknik Informatika UIN Suska Riau Raih Akreditasi “Unggul”...</a></li>
+      </ul>
+    </div>
+
+        <div>
+      <h3 class="text-lg font-bold mb-5 text-white">Quick Link</h3>
+      <ul class="space-y-3 text-sm">
+        <li><a href="#" class={PRIMARY_COLOR_HOVER}>Agenda</a></li>
+        <li><a href="#" class={PRIMARY_COLOR_HOVER}>Prestasi</a></li>
+        <li><a href="#" class={PRIMARY_COLOR_HOVER}>Berita</a></li>
+        <li><a href="#" class={PRIMARY_COLOR_HOVER}>Beasiswa</a></li>
+        <li><a href="#" class={PRIMARY_COLOR_HOVER}>SIREG</a></li>
+        <li><a href="#" class={PRIMARY_COLOR_HOVER}>iRaise</a></li>
+        <li><a href="#" class={PRIMARY_COLOR_HOVER}>Elearning</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+    <div class="max-w-7xl mx-auto px-6 mt-16 text-center text-xs border-t border-gray-700 pt-6">
+    <p class="tracking-wide">
+      &copy; 2025 Teknik Informatika Fakultas Sains dan Teknologi UIN SUSKA Riau. All rights reserved.
+    </p>
+  </div>
+</footer>
