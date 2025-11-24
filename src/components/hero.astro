@@ -1,80 +1,108 @@
 ---
-// FILE: components/hero.astro (atau index.astro)
+// FILE: components/hero.astro
 
-// 1. IMPORT ASSET LOKAL (Sudah di atas)
-import gedung from "../assets/gedung.png"; 
-import labIllustration from "../assets/lab_illustration.png"; 
-import roomIllustration from "../assets/room_illustration.png"; 
+// 1. IMPORT ASSET LOKAL
+import gedung from "../assets/gedung.png";
+import labIllustration from "../assets/lab_illustration.png";
+import roomIllustration from "../assets/room_illustration.png";
 
-// 2. DEFINISI VARIABEL WARNA
-const PRIMARY_BUTTON_BG = "bg-600"; 
-const PRIMARY_BUTTON_HOVER = "hover:bg-blue-900";
-const FASILITAS_BG = "bg-blue-800"; // Warna solid Fasilitas
-const TEXT_COLOR_LIGHT = "text-white"; 
-const PRIMARY_COLOR_TAILWIND = "bg-blue-950"; 
+// 2. DEFINISI VARIABEL WARNA (DISELARASKAN DENGAN PALET BIRU)
+const BUTTON_BG = "bg-blue-700"; // Warna tombol primer yang kontras
+const BUTTON_HOVER = "hover:bg-blue-800"; // Hover tombol
+const PRIMARY_SECTION_BG = "bg-blue-950"; // Background Fasilitas yang sangat gelap
+const ACCENT_BORDER = "border-blue-700"; // Border aksen Fasilitas
+const TEXT_COLOR_LIGHT = "text-white";
+const TEXT_COLOR_DARK = "text-gray-800"; // Digunakan di kartu Fasilitas
 ---
 
-<section class="relative w-full h-screen flex items-center justify-center bg-gray-900 text-white pt-20 md:pt-0 font-poppins"> 
-  
-    <img 
-      src={gedung.src} 
-      alt="Gedung Fakultas Sains dan Teknologi"
-      class="absolute inset-0 w-full h-full object-cover"
-    />
+<section
+  class="relative w-full h-screen flex items-center justify-center bg-gray-900 text-white pt-20 md:pt-0 font-poppins"
+>
+  <img
+    src={gedung.src}
+    alt="Gedung Fakultas Sains dan Teknologi"
+    class="absolute inset-0 w-full h-full object-cover"
+    loading="eager"
+    fetchpriority="high"
+  />
 
-    <div class="absolute inset-0 bg-black/60"></div>
+  <div class="absolute inset-0 bg-black/60"></div>
 
-    <div class="relative z-10 max-w-5xl mx-auto text-center px-4 py-20"> 
-        
-        <h1 class="text-6xl md:text-8xl font-extrabold tracking-tight leading-none">
-          Teknik <br class="md:hidden" /> Informatika
-        </h1>
+  <div class="relative z-10 max-w-5xl mx-auto text-center px-4 py-20">
+    <h1 class="text-6xl md:text-8xl font-extrabold tracking-tight leading-none">
+      Teknik <br class="md:hidden" /> Informatika
+    </h1>
 
-        <p class="mt-6 text-xl md:text-2xl max-w-3xl mx-auto font-light text-gray-100">
-          Program studi unggulan yang fokus pada pengembangan perangkat lunak <br>dan sistem cerdas, siap mencetak profesional di era digital.
-        </p>
+    <p
+      class="mt-6 text-xl md:text-2xl max-w-3xl mx-auto font-light text-gray-100"
+    >
+      Program studi unggulan yang fokus pada pengembangan perangkat lunak <br
+      />dan sistem cerdas, siap mencetak profesional di era digital.
+    </p>
 
-        <a 
-          href="/profil"
-          class={`inline-block mt-10 ${PRIMARY_BUTTON_BG} ${PRIMARY_BUTTON_HOVER} text-white px-6 py-3 rounded-full font-bold shadow-xl transition transform hover:scale-[1.1]`}>
-          
-        </a>
-    </div>
+    <a
+      href="/profil"
+      class={`inline-block mt-10 
+    bg-white/10 backdrop-blur-xl 
+    hover:bg-white/20 
+    text-white px-8 py-4 rounded-full font-bold shadow-xl transition transform hover:scale-[1.05] focus:ring-4 focus:ring-blue-400`}
+    >
+      <span>Pelajari Lebih Lanjut &raquo;</span>
+    </a>
+  </div>
 </section>
 
-<section class="w-full relative bg-[#19376D] pb-16 md:pb-24 pt-16 md:pt-24 font-poppins"> 
-  
-  
-    <div class="max-w-7xl mx-auto px-6 relative z-10">
+<section
+  class={`w-full relative bg-blue-900 pb-16 md:pb-24 pt-16 md:pt-24 font-poppins`}
+>
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div
+      class={`text-center mb-16 max-w-4xl mx-auto ${PRIMARY_SECTION_BG} py-10 px-8 rounded-xl shadow-xl`}
+    >
+      <h2
+        class={`text-5xl md:text-6xl font-extrabold ${TEXT_COLOR_LIGHT} mb-4`}
+      >
+        Fasilitas
+      </h2>
+      <p class={`mt-3 text-lg md:text-xl ${TEXT_COLOR_LIGHT} leading-relaxed`}>
+        Prodi Teknik Informatika UIN SUSKA Riau menyediakan berbagai fasilitas
+        yang memadai, seperti laboratorium yang dilengkapi dengan perangkat
+        keras dan perangkat lunak yang terbaru, ruang kelas yang nyaman, serta
+        akses internet yang cepat dan stabil untuk mendukung kegiatan belajar
+        dan riset para mahasiswa dan dosen.
+      </p>
+    </div>
 
-                <div class={`text-center mb-16 max-w-4xl mx-auto ${PRIMARY_COLOR_TAILWIND} py-10 px-8 rounded-xl shadow-xl`}>
-            <h2 class={`text-5xl md:text-6xl font-extrabold ${TEXT_COLOR_LIGHT} mb-4`}>
-                Fasilitas
-            </h2>
-            <p class={`mt-3 text-lg md:text-xl ${TEXT_COLOR_LIGHT} leading-relaxed`}>
-                Prodi Teknik Informatika UIN SUSKA Riau menyediakan berbagai fasilitas yang memadai, seperti 
-                laboratorium yang dilengkapi dengan perangkat keras dan perangkat lunak yang terbaru, ruang kelas 
-                yang nyaman, serta akses internet yang cepat dan stabil untuk mendukung kegiatan belajar dan riset para mahasiswa dan dosen.
-            </p>
-        </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8">
+      <div
+        class="bg-white p-8 rounded-xl shadow-xl flex flex-col items-center text-center border-t-4 border-blue-900"
+      >
+        <img
+          src={labIllustration.src}
+          alt="Ilustrasi Laboratorium"
+          class="w-full max-w-xs h-40 object-contain mb-6"
+        />
+        <h3 class="text-2xl font-bold mb-3 text-gray-800">Laboratorium</h3>
+        <p class="text-gray-700 leading-relaxed text-sm">
+          Prodi Teknik Informatika memiliki laboratorium yang dilengkapi dengan
+          peralatan terbaru dan canggih...
+        </p>
+      </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8"> 
-          
-                    <div class="bg-white p-8 rounded-xl shadow-xl flex flex-col items-center text-center border-t-4 border-blue-900">
-            <img src={labIllustration.src} alt="Ilustrasi Laboratorium" class="w-full max-w-xs h-40 object-contain mb-6" />
-            <h3 class="text-2xl font-bold mb-3 text-gray-800">Laboratorium</h3>
-            <p class="text-gray-700 leading-relaxed text-sm">
-              Prodi Teknik Informatika memiliki laboratorium yang dilengkapi dengan peralatan terbaru dan canggih...
-            </p>
-          </div>
-
-                    <div class="bg-white p-8 rounded-xl shadow-xl flex flex-col items-center text-center border-t-4 border-blue-900">
-            <img src={roomIllustration.src} alt="Ilustrasi Ruang Kelas" class="w-full max-w-xs h-40 object-contain mb-6" />
-            <h3 class="text-2xl font-bold mb-3 text-gray-800">Ruang Kelas</h3>
-            <p class="text-gray-700 leading-relaxed text-sm">
-              Prodi Teknik Informatika UIN SUSKA Riau memiliki ruang kelas yang nyaman dilengkapi dengan meja mahasiswa dan dosen serta proyektor...
-            </p>
-          </div>
-        </div>
-    </div>
+      <div
+        class="bg-white p-8 rounded-xl shadow-xl flex flex-col items-center text-center border-t-4 border-blue-900"
+      >
+        <img
+          src={roomIllustration.src}
+          alt="Ilustrasi Ruang Kelas"
+          class="w-full max-w-xs h-40 object-contain mb-6"
+        />
+        <h3 class="text-2xl font-bold mb-3 text-gray-800">Ruang Kelas</h3>
+        <p class="text-gray-700 leading-relaxed text-sm">
+          Prodi Teknik Informatika UIN SUSKA Riau memiliki ruang kelas yang
+          nyaman dilengkapi dengan meja mahasiswa dan dosen serta proyektor...
+        </p>
+      </div>
+    </div>
+  </div>
 </section>
