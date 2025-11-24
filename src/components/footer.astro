@@ -1,195 +1,200 @@
 ---
-// FILE: components/footer.astro (atau Layout.astro)
 import logoImage from "../assets/logo.png";
 
-// Definisi Warna Hover agar konsisten
-const PRIMARY_COLOR_HOVER = "hover:text-blue-400"; // Menggunakan hijau muda agar menonjol di background gelap
+// Definisi Warna Konsisten (Mengganti Indigo ke Biru)
+const PRIMARY_ACCENT_COLOR = "blue-900";
+const PRIMARY_HOVER_COLOR = "hover:text-blue-400";
+const ICON_ACCENT_COLOR = "text-blue-400";
 const DARK_BG = "bg-slate-900";
 const TEXT_LIGHT = "text-gray-300";
-const TEXT_ACCENT = "text-blue-400";
-// Font Poppins
-const FONT_CLASS = "font-poppins";
 
-// info kontak
+// Data untuk Quick Links
+const quickLinks = [
+  { name: "Agenda", href: "#" },
+  { name: "Prestasi", href: "#" },
+  { name: "Berita", href: "#" },
+  { name: "Beasiswa", href: "#" },
+  { name: "SIREG", href: "https://sireg.uin-suska.ac.id/" },
+  { name: "iRaise", href: "https://iraise.uin-suska.ac.id/" },
+  { name: "Elearning", href: "https://elearning.uin-suska.ac.id/" },
+  { name: "Himatif", href: "https://hima.tif.uin-suska.ac.id/" },
+];
+
+// Data untuk Kontak
 const contactInfo = {
   address:
-    "Jurusan Teknik Informatika, Gedung FST UIN Suska Riau. Jl. HR. Soebrantas No.155 KM 18, Simpang Baru Panam, Pekanbaru 28293",
+    "Jurusan Teknik Informatika, Gedung Fakultas Sains & Teknologi UIN Suska Riau. Jl. HR. Soebrantas No.155 KM 18, Simpang Baru Panam, Pekanbaru 28293",
   email: "tif@uin-suska.ac.id",
 };
-
-const beritaTerbaru = [
-  { text: "Penerimaan Mahasiswa Baru Jalur SMMPTN-Barat 2025", href: "#" },
-  { text: "Perpanjangan Waktu Pembayaran UKT Mahasiswa Baru", href: "#" },
-  {
-    text: "Teknik Informatika UIN Suska Riau Raih Akreditasi Unggul",
-    href: "#",
-  },
-];
-const quickLinks = [
-  { text: "Agenda", href: "#" },
-  { text: "Prestasi", href: "#" },
-  { text: "Berita", href: "#" },
-  { text: "Beasiswa", href: "#" },
-  { text: "SIREG", href: "#" },
-  { text: "iRaise", href: "#" },
-  { text: "Elearning", href: "#" },
-];
 ---
 
-<footer class={`${DARK_BG} ${TEXT_LIGHT} py-12 md:py-16 ${FONT_CLASS}`}>
-  <div class="max-w-7xl mx-auto px-6 flex flex-col gap-10">
+<footer class={`${DARK_BG} ${TEXT_LIGHT} py-12 md:py-16`}>
+  <div class="container mx-auto px-6 flex flex-col gap-10">
     <div
-      class="flex justify-center items-center gap-6 pb-6 border-b border-gray-700/50"
+      class="flex items-center justify-center gap-6 pb-6 border-b border-gray-700/50"
     >
-      <!-- ig -->
       <a
         href="#"
         aria-label="Instagram"
-        class="text-gray-400 hover:text-white transition duration-300 transform hover:scale-110"
+        class="text-pink-400 hover:text-white transform hover:scale-110 transition duration-300"
       >
-        <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24"
-          ><path
-            d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.66 0 3 1.34 3 3v10c0 1.66-1.34 3-3 3H7c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h10zm-5 3.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5zm0 2A2.5 2.5 0 1 1 9.5 12 2.5 2.5 0 0 1 12 9.5zM17.25 6A1.25 1.25 0 1 0 18.5 7.25 1.25 1.25 0 0 0 17.25 6z"
-          ></path></svg
+        <svg
+          width="30"
+          height="30"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
         >
+          <path
+            d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.66 0 3 1.34 3 3v10c0 1.66-1.34 3-3 3H7c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h10zm-5 3.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5zm0 2A2.5 2.5 0 1 1 9.5 12 2.5 2.5 0 0 1 12 9.5zM17.25 6A1.25 1.25 0 1 0 18.5 7.25 1.25 1.25 0 0 0 17.25 6z"
+          ></path>
+        </svg>
       </a>
-      <!-- yt -->
       <a
         href="#"
         aria-label="YouTube"
-        class="text-gray-400 hover:text-white transition duration-300 transform hover:scale-110"
+        class="text-red-500 hover:text-white transform hover:scale-110 transition duration-300"
       >
-        <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24"
-          ><path
+        <svg
+          width="30"
+          height="30"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
             d="M19.6 3.2H4.4A4.4 4.4 0 0 0 0 7.6v8.8a4.4 4.4 0 0 0 4.4 4.4h15.2a4.4 4.4 0 0 0 4.4-4.4V7.6a4.4 4.4 0 0 0-4.4-4.4zM9.6 15.2V8.8l6.4 3.2-6.4 3.2z"
-          ></path></svg
-        >
+          ></path>
+        </svg>
       </a>
-      <!-- twitter -->
-      <a
-        href="#"
-        aria-label="Twitter"
-        class="text-gray-400 hover:text-white transition duration-300 transform hover:scale-110"
-      >
-        <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24"
-          ><path
-            d="M22 5.92a8.27 8.27 0 0 1-2.36.65A4.12 4.12 0 0 0 21.4 4a8.19 8.19 0 0 1-2.6 1A4.11 4.11 0 0 0 12 8.1a11.65 11.65 0 0 1-8.46-4.3 4.11 4.11 0 0 0 1.27 5.48A4 4 0 0 1 3 8.4v.05a4.11 4.11 0 0 0 3.29 4 4.14 4.14 0 0 1-1.85.07 4.11 4.11 0 0 0 3.83 2.85 8.25 8.25 0 0 1-5.1 1.76A8.5 8.5 0 0 1 2 17.1a11.62 11.62 0 0 0 6.29 1.84c7.55 0 11.68-6.26 11.68-11.68 0-.18 0-.35-.01-.53A8.18 8.18 0 0 0 22 5.92z"
-          ></path></svg
-        >
-      </a>
-      <!-- fb -->
       <a
         href="#"
         aria-label="Facebook"
-        class="text-gray-400 hover:text-white transition duration-300 transform hover:scale-110"
+        class="text-blue-600 hover:text-white transform hover:scale-110 transition duration-300"
       >
-        <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24"
-          ><path
-            d="M22 12a10 10 0 10-11.5 9.9v-7h-2v-3h2v-2c0-2 1.2-3.1 3-3.1.9 0 1.9.1 2.9.3v2h-1.6c-1.3 0-1.7.8-1.7 1.6v1.8h3l-.5 3h-2.5v7A10 10 0 0022 12z"
-          ></path></svg
+        <svg
+          width="30"
+          height="30"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
         >
+          <path
+            d="M22 12a10 10 0 10-11.5 9.9v-7h-2v-3h2v-2c0-2 1.2-3.1 3-3.1.9 0 1.9.1 2.9.3v2h-1.6c-1.3 0-1.7.8-1.7 1.6v1.8h3l-.5 3h-2.5v7A10 10 0 0022 12z"
+          ></path>
+        </svg>
+      </a>
+      <a
+        href="#"
+        aria-label="Twitter"
+        class="text-sky-400 hover:text-white transform hover:scale-110 transition duration-300"
+      >
+        <svg
+          width="30"
+          height="30"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            d="M22 5.92a8.27 8.27 0 0 1-2.36.65A4.12 4.12 0 0 0 21.4 4a8.19 8.19 0 0 1-2.6 1A4.11 4.11 0 0 0 12 8.1a11.65 11.65 0 0 1-8.46-4.3 4.11 4.11 0 0 0 1.27 5.48A4 4 0 0 1 3 8.4v.05a4.11 4.11 0 0 0 3.29 4 4.14 4.14 0 0 1-1.85.07 4.11 4.11 0 0 0 3.83 2.85 8.25 8.25 0 0 1-5.1 1.76A8.5 8.5 0 0 1 2 17.1a11.62 11.62 0 0 0 6.29 1.84c7.55 0 11.68-6.26 11.68-11.68 0-.18 0-.35-.01-.53A8.18 8.18 0 0 0 22 5.92z"
+          ></path>
+        </svg>
       </a>
     </div>
 
-    <!-- logo uin -->
-    <!-- Wrapper utama untuk logo + hubungi kami -->
-    <div
-      class="flex flex-col md:flex-row justify-center items-center gap-16 py-6 border-b border-gray-700/50"
-    >
-      <!-- Logo + teks branding -->
-      <div class="flex items-center gap-3">
-        <img
-          src={logoImage.src}
-          alt="Logo UIN Suska Riau"
-          class="h-12 w-auto"
-        />
-        <div class="text-left">
-          <h4 class="text-lg font-semibold text-white">
-            UIN Sultan Syarif Kasim Riau
-          </h4>
-          <p class={`text-sm font-bold ${TEXT_ACCENT}`}>Teknik Informatika</p>
-        </div>
-      </div>
-
-      <!-- Hubungi Kami -->
-      <!-- Hubungi Kami -->
-      <div class="flex flex-col gap-2 max-w-xs text-center md:text-left">
-        <h3 class="text-base font-bold mb-1 text-white">Hubungi Kami</h3>
-
-        <!-- Alamat -->
-        <div
-          class="flex items-start gap-2 w-full justify-center md:justify-start"
-        >
-          <svg
-            class={`w-4 h-4 mt-1 shrink-0 ${TEXT_ACCENT}`}
-            fill="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"
-            ></path>
-          </svg>
-          <p class="text-xs leading-relaxed">{contactInfo.address}</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 lg:gap-12 pt-4">
+      <div
+        class="flex flex-col items-center md:items-start text-center md:text-left"
+      >
+        <div class="flex items-center gap-3 mb-4">
+          <img
+            src={logoImage.src}
+            alt="Logo UIN Suska Riau"
+            class="h-14 w-auto"
+          />
+          <div>
+            <h4 class="text-md font-semibold text-white leading-tight">
+              UIN Sultan Syarif Kasim Riau
+            </h4>
+            <p
+              class={`text-xl font-bold ${PRIMARY_ACCENT_COLOR} leading-tight`}
+            >
+              Teknik Informatika
+            </p>
+            <p class="text-sm text-gray-400">Fakultas Sains & Teknologi</p>
+          </div>
         </div>
 
-        <!-- Email -->
-        <div class="flex items-center gap-2 justify-center md:justify-start">
-          <svg
-            class={`w-4 h-4 shrink-0 ${TEXT_ACCENT}`}
-            fill="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
-            ></path>
-          </svg>
-          <a
-            href={`mailto:${contactInfo.email}`}
-            class={`${PRIMARY_COLOR_HOVER} hover:text-white`}
-          >
-            {contactInfo.email}
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- 3 kolom dibawah logo -->
-    <div
-      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 text-sm pt-4"
-    >
-      <!-- kolom 2 -->
-      <div>
-        <h3 class="text-base font-bold mb-4 text-white">Visi Keilmuan</h3>
-        <p class="text-xs leading-relaxed text-gray-400">
-          Menjadi Program Studi Teknik Informatika yang <b>unggul</b> dalam bidang
-          <b>Data Analytics</b> dan <b>Software Development</b> yang mengintegrasikan
-          Informatika dan Islam di Indonesia pada tahun 2025.
+        <p class="text-sm text-gray-400 mt-4 max-w-lg">
+          Program Studi TIF UIN Suska Riau unggul dalam bidang <b
+            >Data Analytics</b
+          > dan <b>Software Development</b>
+          yang mengintegrasikan Informatika dan Islam. Visi menjadi program studi
+          unggul di Indonesia pada 2025.
         </p>
       </div>
-      <!-- kolom 3 -->
-      <div>
-        <h3 class="text-base font-bold mb-4 text-white">Berita Terbaru</h3>
-        <ul class="space-y-3 text-xs text-gray-400">
-          {
-            beritaTerbaru.map((item) => (
-              <li>
-                <a href={item.href} class={PRIMARY_COLOR_HOVER}>
-                  {item.text}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
+
+      <div class="md:col-span-1">
+        <h5
+          class={`text-lg font-bold text-white mb-4 border-b border-blue-400 pb-1 inline-block`}
+        >
+          Hubungi Kami
+        </h5>
+        <div class="space-y-3 text-sm text-gray-400">
+          <p class="font-semibold text-white">Alamat Jurusan:</p>
+          <div class="flex items-start">
+            <svg
+              class={`w-5 h-5 mr-3 mt-1 ${ICON_ACCENT_COLOR} shrink-0`}
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"
+              ></path>
+            </svg>
+            <span class="leading-relaxed">
+              {contactInfo.address}
+            </span>
+          </div>
+          <div class="flex items-center">
+            <svg
+              class={`w-5 h-5 mr-3 ${ICON_ACCENT_COLOR} shrink-0`}
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+              ></path>
+            </svg>
+            <a
+              href={`mailto:${contactInfo.email}`}
+              class={`${PRIMARY_HOVER_COLOR} transition duration-200`}
+            >
+              {contactInfo.email}
+            </a>
+          </div>
+        </div>
       </div>
-      <!-- Quick Link -->
-      <div>
-        <h3 class="text-base font-bold mb-4 text-white">Quick Link</h3>
-        <ul class="space-y-3 text-xs text-gray-400">
+
+      <div class="md:col-span-1">
+        <h5
+          class={`text-lg font-bold text-white mb-4 border-b border-blue-400 pb-1 inline-block`}
+        >
+          Quick Link
+        </h5>
+        <ul class="space-y-2">
           {
-            quickLinks.map((item) => (
+            quickLinks.map((link) => (
               <li>
-                <a href={item.href} class={PRIMARY_COLOR_HOVER}>
-                  {item.text}
+                <a
+                  href={link.href}
+                  class={`text-gray-400 ${PRIMARY_HOVER_COLOR} transition duration-200 text-sm flex items-center`}
+                >
+                  <span class={`mr-2 ${ICON_ACCENT_COLOR}`}>&raquo;</span>{" "}
+                  {link.name}
                 </a>
               </li>
             ))
@@ -197,5 +202,10 @@ const quickLinks = [
         </ul>
       </div>
     </div>
+  </div>
+
+  <div class="mt-12 text-center text-gray-500 text-sm">
+    © 2025 Teknik Informatika UIN Sultan Syarif Kasim Riau. All rights
+    reserved.
   </div>
 </footer>
