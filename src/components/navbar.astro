@@ -1,39 +1,71 @@
 ---
 import logoImage from "../assets/logo.png";
+
+// Definisi Warna & Style
+const PRIMARY_COLOR_HOVER = "hover:text-blue-950";
+const TEXT_COLOR = "text-white";
+const ACTIVE_COLOR = "text-blue-950 order-b-2 border-blue-900 pb-2"; // Gaya link aktif ala UIB
+const FONT_CLASS = "font-poppins"; 
 ---
-// Navbar TIF UIN Suska
-<nav class="w-full bg-white shadow-sm fixed top-0 left-0 z-50">
-  <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
-    
-    <!-- Logo -->
-    <a href="/beranda" class="flex items-center gap-2">
-      <img src={logoImage.src} alt="Logo TIF" class="w-10 h-10" />
-      <span class="text-lg font-semibold">Teknik Informatika</span>
-    </a>
 
-    <!-- Menu Desktop -->
-    <ul class="hidden md:flex gap-6 font-medium text-gray-700">
-      <li><a href="/beranda" class="hover:text-blue-600">Beranda</a></li>
+<nav class="w-full shadow-md fixed top-0 left-0 z-50">
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-3"> 
+    
+    <input type="checkbox" id="menu-toggle" class="hidden peer" />
 
-      <li class="group relative cursor-pointer">
-        <span class="hover:text-blue-600">Profil ▾</span>
-        <div class="absolute hidden group-hover:block bg-white shadow-md rounded p-3 w-40">
-          <a href="/profil" class="block py-1 hover:text-blue-600">Profil</a>
-          <a href="/about" class="block py-1 hover:text-blue-600">Tentang TIF</a>
-        </div>
-      </li>
+        <a href="/beranda" class={`flex items-center gap-2 ${FONT_CLASS}`}> 
+      <img src={logoImage.src} alt="Logo TIF" class="w-8 h-8" />
+       
+    </a>
 
-      <li class="group relative cursor-pointer">
-        <span class="hover:text-blue-600">Akademik ▾</span>
-        <div class="absolute hidden group-hover:block bg-white shadow-md rounded p-3 w-40">
-          <a href="/akademik" class="block py-1 hover:text-blue-600">Informasi Akademik</a>
-        </div>
-      </li>
+            <ul class={`text-sm hidden md:flex gap-12 font-semibold ${TEXT_COLOR} ${FONT_CLASS} flex-1 justify-center`}>
+      
+      <li class={ACTIVE_COLOR}> <a href="/beranda">Beranda</a> </li>
+      
+            <li class="group relative cursor-pointer">
+        <span class={`${PRIMARY_COLOR_HOVER} flex items-center gap-1`}> Profil </span>
+                <div class="absolute hidden group-hover:block shadow-xl rounded-md mt-2 p-3 w-48 border border-gray-100 z-50">
+          <a href="/profil" class={`block py-2 ${PRIMARY_COLOR_HOVER} text-sm font-normal`}>Profil</a>
+          <a href="/about" class={`block py-2 ${PRIMARY_COLOR_HOVER} text-sm font-normal`}>Tentang TIF</a>
+        </div>
+      </li>
 
-      <li><a href="/penelitian" class="hover:text-blue-600">Penelitian</a></li>
-      <li><a href="/berita" class="hover:text-blue-600">Berita</a></li>
-      <li><a href="/agenda" class="hover:text-blue-600">Agenda</a></li>
-      <li><a href="/alumni" class="hover:text-blue-600">Alumni</a></li>
-    </ul>
-  </div>
+            <li class="group relative cursor-pointer">
+        <span class={`${PRIMARY_COLOR_HOVER} flex items-center gap-1`}> Akademik </span>
+        <div class="absolute hidden group-hover:block rounded-md mt-2 p-3 w-40 border border-gray-100 z-50">
+          <a href="/akademik" class={`block py-2 ${PRIMARY_COLOR_HOVER} text-sm font-normal`}>Informasi Akademik</a>
+        </div>
+      </li>
+
+            <li><a href="/penelitian" class={PRIMARY_COLOR_HOVER}>Penelitian</a></li>
+      <li><a href="/berita" class={PRIMARY_COLOR_HOVER}>Berita</a></li>
+      <li><a href="/agenda" class={PRIMARY_COLOR_HOVER}>Agenda</a></li>
+      <li><a href="/alumni" class={PRIMARY_COLOR_HOVER}>Alumni</a></li>
+      
+    </ul>
+
+        <label for="menu-toggle" class="md:hidden cursor-pointer text-gray-700 hover:text-green-600">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </label>
+  </div>
+
+
+    <div class={`md:hidden hidden peer-checked:block absolute w-full bg-white shadow-lg border-t border-gray-100 ${FONT_CLASS}`}>
+    <ul class="flex flex-col text-sm font-medium text-gray-700 px-6 py-2">
+      <li class="py-2"><a href="/beranda" class={`block ${PRIMARY_COLOR_HOVER} text-blue-900 font-semibold`}>Beranda</a></li>
+      <li class="py-2">
+        <span class="block text-gray-700 font-semibold">Profil</span>
+        <div class="pl-4 pt-1">
+          <a href="/profil" class={`block py-1 ${PRIMARY_COLOR_HOVER}`}>Profil</a>
+          <a href="/about" class={`block py-1 ${PRIMARY_COLOR_HOVER}`}>Tentang TIF</a>
+        </div>
+      </li>
+      <li class="py-2"><a href="/penelitian" class={PRIMARY_COLOR_HOVER}>Penelitian</a></li>
+      <li class="py-2"><a href="/berita" class={PRIMARY_COLOR_HOVER}>Berita</a></li>
+      <li class="py-2"><a href="/agenda" class={PRIMARY_COLOR_HOVER}>Agenda</a></li>
+      <li class="py-2"><a href="/alumni" class={PRIMARY_COLOR_HOVER}>Alumni</a></li>
+    </ul>
+  </div>
 </nav>
