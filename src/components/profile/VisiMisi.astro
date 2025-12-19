@@ -1,0 +1,54 @@
+---
+interface Props {
+  visi: string;
+  misi: string[];
+}
+
+const { visi, misi } = Astro.props;
+---
+
+<div class="grid md:grid-cols-5 gap-8 mb-16 animate-fade-in-up">
+  <!-- VISI -->
+  <div
+    class="md:col-span-2 bg-linear-to-br from-emerald-900/20 to-slate-900 border border-emerald-500/20 p-8 rounded-2xl relative overflow-hidden group hover:border-emerald-500/40 transition-colors"
+  >
+    <div
+      class="absolute top-0 right-0 w-24 h-24 bg-emerald-500/10 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"
+    >
+    </div>
+
+    <h2
+      class="text-emerald-400 font-bold tracking-widest text-xs uppercase mb-4 flex items-center gap-2"
+    >
+      <span class="w-8 h-px bg-emerald-500"></span> Visi Kami
+    </h2>
+
+    <p class="text-white text-lg font-medium italic leading-relaxed">
+      "{visi}"
+    </p>
+  </div>
+
+  <!-- MISI -->
+  <div
+    class="md:col-span-3 bg-slate-900/50 border border-slate-800 p-8 rounded-2xl hover:border-slate-700 transition-colors"
+  >
+    <h2
+      class="text-cyan-400 font-bold tracking-widest text-xs uppercase mb-6 flex items-center gap-2"
+    >
+      <span class="w-8 h-px bg-cyan-500"></span> Misi Kami
+    </h2>
+
+    <ul class="space-y-4">
+      {
+        misi.map((item, index) => (
+          <li class="flex items-start gap-3 text-slate-300 text-sm md:text-base leading-relaxed">
+            <span class="shrink-0 w-6 h-6 rounded-full bg-slate-800 text-cyan-400 flex items-center justify-center text-xs font-bold mt-0.5">
+              {index + 1}
+            </span>
+            <span>{item}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>

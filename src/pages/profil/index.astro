@@ -1,0 +1,27 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import PageHero from "../../components/common/PageHero.astro";
+import VisionMission from "../../components/profile/VisiMisi.astro";
+import History from "../../components/profile/History.astro";
+import gedungBg from "@/assets/images/gedung-lama.jpg";
+import { visi, misi, sejarah } from "../../data/profil";
+---
+
+<MainLayout
+  title="Profil Program Studi"
+  description="Sejarah, Visi, dan Misi Teknik Informatika UIN Suska Riau"
+  isContentPage={true}
+>
+  <PageHero
+    title="Profil Program Studi"
+    description="Mengenal lebih dekat sejarah dan arah tujuan Teknik Informatika UIN Suska Riau."
+    bgImage={gedungBg.src}
+  />
+
+  <div class="container mx-auto px-6 py-3 md:py-4">
+    <div class="max-w-5xl mx-auto">
+      <VisionMission visi={visi} misi={misi} />
+      <History title={sejarah.title} paragraphs={sejarah.paragraphs} />
+    </div>
+  </div>
+</MainLayout>

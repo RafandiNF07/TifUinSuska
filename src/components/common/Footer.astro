@@ -1,0 +1,200 @@
+---
+// src/components/Footer.astro
+import { Image } from "astro:assets";
+import {
+  footerLinks,
+  externalLinks,
+  contactConfig,
+  akreditasiConfig,
+} from "@/data/footer";
+
+// Pastikan path ini benar
+import logoUin from "@/assets/images/common/uin-suska.png";
+import logoBlu from "@/assets/images/partners/blu.svg";
+import logoKemenag from "@/assets/images/partners/kemenag-berdampak.png";
+import logoUnggul from "@/assets/images/partners/akreditasi-unggul.png";
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="relative bg-slate-950 text-slate-200 overflow-hidden font-sans">
+  <div
+    class="pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.05]"
+  >
+    <Image
+      src={logoUin}
+      alt=""
+      aria-hidden="true"
+      class="w-[500px] max-w-full grayscale"
+    />
+  </div>
+
+  <div class="relative container mx-auto px-6 pt-12 md:pt-16 pb-6 md:pb-8">
+    <div class="grid gap-10 md:grid-cols-3 mb-12">
+      <div class="space-y-6">
+        <div>
+          <span
+            class="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-500 mb-2 block"
+          >
+            Program Studi
+          </span>
+
+          <h3
+            class="text-xl md:text-2xl font-bold text-white leading-tight font-sans"
+          >
+            Teknik Informatika
+          </h3>
+
+          <div class="mt-3 flex items-start gap-3">
+            <div class="w-0.5 h-10 bg-slate-800 rounded-full mt-1"></div>
+
+            <p class="text-sm text-slate-400 leading-relaxed">
+              Fakultas Sains dan Teknologi<br />
+              <span class="text-slate-200 font-medium"
+                >UIN Sultan Syarif Kasim Riau</span
+              >
+            </p>
+          </div>
+        </div>
+
+        <div class="relative pl-4 border-l-2 border-emerald-500/30">
+          <p class="text-sm text-slate-300 italic leading-relaxed">
+            "Mengintegrasikan keilmuan informatika dengan nilai-nilai Keislaman
+            untuk peradaban masa depan."
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-8">
+        <div>
+          <h4 class="text-sm font-semibold uppercase tracking-wider text-white">
+            Tautan Cepat
+          </h4>
+          <div class="mt-1 h-0.5 w-12 bg-emerald-500"></div>
+          <ul class="mt-4 space-y-2 text-sm">
+            {
+              footerLinks.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    class="hover:text-emerald-400 transition block"
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-semibold uppercase tracking-wider text-white">
+            Sistem & Institusi
+          </h4>
+          <div class="mt-1 h-0.5 w-12 bg-emerald-500"></div>
+          <ul class="mt-4 space-y-2 text-sm">
+            {
+              externalLinks.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="group inline-flex items-center gap-1.5 hover:text-emerald-400 transition"
+                  >
+                    {link.name}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-3 w-3 text-slate-500 group-hover:text-emerald-400 transition-colors"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                      />
+                    </svg>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="text-sm font-semibold uppercase tracking-wider text-white">
+          Hubungi Kami
+        </h4>
+        <div class="mt-1 h-0.5 w-12 bg-emerald-500"></div>
+        <address class="mt-4 not-italic text-sm text-slate-300 leading-relaxed">
+          {contactConfig.address}
+        </address>
+        <div class="mt-4 flex flex-col gap-2 text-sm">
+          <a
+            href={`mailto:${contactConfig.email}`}
+            class="flex items-center gap-2 hover:text-emerald-400 transition"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-4 w-4 text-emerald-500"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              ><path
+                d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
+              ></path><path
+                d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
+              ></path></svg
+            >
+            {contactConfig.email}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t border-slate-800 py-8 mb-2">
+      <div
+        class="flex flex-wrap items-center justify-center gap-8 md:gap-12 opacity-100"
+      >
+        <Image
+          src={logoUin}
+          alt="UIN Sultan Syarif Kasim Riau"
+          class="h-14 w-auto object-contain drop-shadow-md hover:scale-110 transition-transform duration-300"
+        />
+
+        <div class="h-10 w-px bg-slate-800 hidden md:block"></div>
+
+        <Image
+          src={logoBlu}
+          alt="BLU Speed"
+          class="h-12 w-auto object-contain drop-shadow-md hover:scale-110 transition-transform duration-300"
+        />
+
+        <Image
+          src={logoKemenag}
+          alt="Kementerian Agama RI"
+          class="h-12 w-auto object-contain drop-shadow-md hover:scale-110 transition-transform duration-300"
+        />
+
+        <div class="h-10 w-px bg-slate-800 hidden md:block"></div>
+
+        <Image
+          src={logoUnggul}
+          alt="Akreditasi Unggul"
+          title={akreditasiConfig.tooltip}
+          class="h-16 w-auto object-contain drop-shadow-md hover:scale-110 transition-transform duration-300"
+        />
+      </div>
+    </div>
+
+    <div
+      class="border-t border-slate-900 pt-6 text-center text-xs text-slate-500"
+    >
+      © {currentYear} Program Studi Teknik Informatika — UIN Sultan Syarif Kasim Riau
+    </div>
+  </div>
+</footer>

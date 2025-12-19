@@ -1,0 +1,34 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import PageHero from "../../components/common/PageHero.astro"; // Import PageHero
+import News from "../../components/home/News.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+
+import beritaBg from "@/assets/images/berita/bg-img.jpg";
+
+const allNews = await getCollection("berita", (entry) => {
+  return entry.data.draft !== true;
+});
+
+type BeritaItem = CollectionEntry<"berita">;
+const sortedNews: BeritaItem[] = allNews.sort(
+  (a: BeritaItem, b: BeritaItem) =>
+    b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<MainLayout
+  title="Berita & Agenda | Teknik Informatika"
+  description="Berita terbaru, agenda kegiatan, dan prestasi Teknik Informatika UIN Suska Riau"
+  isContentPage={true}
+>
+  <PageHero
+    title="Berita & Agenda"
+    description="Informasi terbaru seputar kegiatan akademik, prestasi, dan pengumuman resmi."
+    bgImage={beritaBg.src}
+  />
+
+  <div class="container mx-auto px-6 py-2 md:py-4">
+    <News items={sortedNews} />
+  </div>
+</MainLayout>

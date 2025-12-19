@@ -1,0 +1,1852 @@
+================================================================================
+FILE PATH: tailwind.config.js
+================================================================================
+/** @type {import('tailwindcss').Config} */
+export default {
+	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+	theme: {
+		extend: {
+            // 1. Definisikan Keyframes (Gerakannya)
+			keyframes: {
+				'fade-in-up': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(20px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
+				}
+			},
+            // 2. Definisikan Nama Class Animasinya
+			animation: {
+				'fade-in-up': 'fade-in-up 0.8s ease-out forwards'
+			}
+		},
+	},
+	plugins: [],
+}
+
+================================================================================
+FILE PATH: src/data/navigation.ts
+================================================================================
+export const menuItems = [
+  { 
+    title: "Beranda", 
+    path: "/" 
+  },
+  { 
+    title: "Profil", 
+    path: "/profil", 
+    children: [
+      { title: "Profil Prodi", path: "/profil" },
+      { title: "Visi & Misi", path: "/profil/visi-misi" },
+      { title: "Dosen & Staff", path: "/profil/dosen" },
+    ]
+  },
+  { 
+    title: "Akademik", 
+    path: "/akademik",
+    children: [
+      { title: "Kurikulum", path: "/akademik/kurikulum" },
+      { title: "Jadwal Kuliah", path: "/akademik/jadwal" },
+      { title: "Panduan Skripsi", path: "/akademik/skripsi" },
+    ]
+  },
+  { title: "Penelitian", path: "/penelitian" },
+  { title: "Berita", path: "/berita" },
+];
+
+export const siteConfig = {
+  title: "Teknik Informatika",
+  subtitle: "UIN Suska Riau",
+  siakadUrl: "https://sireg.uin-suska.ac.id"
+};
+
+================================================================================
+FILE PATH: src/data/footer.ts
+================================================================================
+// src/data/footer.ts
+
+export const footerLinks = [
+  { name: "Agenda", href: "/agenda" },
+  { name: "Prestasi", href: "/prestasi" },
+  { name: "Berita", href: "/berita" },
+  { name: "Beasiswa", href: "/beasiswa" },
+];
+
+export const externalLinks = [
+  { name: "Sistem Informasi Akademik", href: "https://sireg.uin-suska.ac.id/" },
+  { name: "iRaise", href: "https://iraise.uin-suska.ac.id/" },
+  { name: "Elearning", href: "https://elearning.uin-suska.ac.id/" },
+  { name: "Himpunan Mahasiswa", href: "https://hima.tif.uin-suska.ac.id/" },
+];
+
+export const contactConfig = {
+  address: "Gedung Fakultas Sains & Teknologi UIN Suska Riau. Jl. HR. Soebrantas No.155 KM 18, Simpang Baru Panam, Pekanbaru 28293",
+  email: "tif@uin-suska.ac.id",
+};
+
+// TAMBAHAN BARU
+export const akreditasiConfig = {
+  status: "UNGGUL",
+  tooltip: "Terakreditasi UNGGUL oleh LAM INFOKOM (SK: 086/SK/LAM-INFOKOM/Ak/S/IV/2025). Berlaku hingga 25 April 2030."
+};
+
+================================================================================
+FILE PATH: src/data/home.ts
+================================================================================
+export const heroData = {
+  badge: "Terakreditasi UNGGUL",
+  title: "Membangun Peradaban Digital Rabbani",
+  description: "Mengembangkan Data Analytics dan Software Development berlandaskan nilai Islam.", 
+  primaryCta: "Jelajahi Profil",
+  secondaryCta: "Info Pendaftaran",
+};
+
+
+export const statsData = [
+  { value: "30+", label: "Dosen Ahli", icon: "user-group" },
+  { value: "1.2k+", label: "Mahasiswa Aktif", icon: "academic-cap" },
+  { value: "500+", label: "Alumni Tersebar", icon: "briefcase" },
+  { value: "A", label: "Akreditasi Unggul", icon: "badge-check" },
+];
+
+export const featuresData = [
+  {
+    title: "Kurikulum Berbasis Industri",
+    description: "Materi pembelajaran yang terus diperbarui sesuai standar industri teknologi global (AI, IoT, Cloud Computing).",
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>`,
+  },
+  {
+    title: "Integrasi Nilai Islam",
+    description: "Melahirkan teknolog yang tidak hanya cerdas secara intelektual, tetapi juga memiliki fondasi akhlak Rabbani yang kuat.",
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>`,
+  },
+  {
+    title: "Dosen & Pakar Ahli",
+    description: "Dibimbing langsung oleh praktisi dan akademisi lulusan universitas terbaik dalam dan luar negeri.",
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>`,
+  },
+  {
+    title: "Laboratorium Canggih",
+    description: "Fasilitas praktikum lengkap mulai dari Lab RPL, Jaringan Komputer, Multimedia, hingga Artificial Intelligence.",
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>`,
+  },
+  {
+    title: "Merdeka Belajar (MBKM)",
+    description: "Kesempatan magang, studi independen, dan pertukaran pelajar di perusahaan teknologi terkemuka.",
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>`,
+  },
+  {
+    title: "Prospek Karir Luas",
+    description: "Alumni tersebar di berbagai sektor: Software Engineer, Data Scientist, ASN, hingga Technopreneur sukses.",
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>`,
+  },
+];
+
+
+================================================================================
+FILE PATH: src/content/config.ts
+================================================================================
+import { dosenCollection } from "./dosen";
+import { beritaCollection } from "./berita";
+
+export const collections = {
+  berita: beritaCollection,
+  dosen: dosenCollection,
+};
+
+
+================================================================================
+FILE PATH: src/content/profil.ts
+================================================================================
+export const visi =
+  "Terwujudnya Program Studi Teknik Informatika yang gemilang dan terbilang dalam pengembangan sains dan teknologi berbasis integrasi Islam di Asia Tenggara tahun 2025.";
+
+export const misi = [
+  "Menyelenggarakan pendidikan dan pengajaran yang berkualitas dalam bidang Teknik Informatika yang terintegrasi dengan nilai-nilai keislaman.",
+  "Melaksanakan penelitian inovatif di bidang Teknik Informatika yang relevan dengan kebutuhan masyarakat dan industri.",
+  "Melaksanakan pengabdian kepada masyarakat berbasis teknologi informasi untuk pemberdayaan umat.",
+  "Membangun kerjasama dengan berbagai instansi dalam dan luar negeri untuk pengembangan tridharma perguruan tinggi.",
+];
+
+export const sejarah = {
+  title: "Sejarah Singkat",
+  paragraphs: [
+    "Program Studi Teknik Informatika UIN Sultan Syarif Kasim Riau didirikan sebagai respons terhadap kebutuhan akan tenaga ahli teknologi informasi yang tidak hanya kompeten secara teknis, tetapi juga memiliki fondasi nilai-nilai keislaman yang kuat.",
+    "Saat ini, Teknik Informatika telah meraih akreditasi UNGGUL, membuktikan kualitas manajemen, kurikulum, dan output lulusan yang diakui secara nasional.",
+  ],
+};
+
+
+================================================================================
+FILE PATH: src/content/berita.ts
+================================================================================
+import { defineCollection, z } from "astro:content";
+
+export const beritaCollection = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    date: z.date(),
+    category: z.string(),
+    image: z.string().url(),
+    excerpt: z.string(),
+    draft: z.boolean().optional(),
+  }),
+});
+
+
+================================================================================
+FILE PATH: src/content/dosen.ts
+================================================================================
+// src/content/dosen.ts
+import { defineCollection, z } from "astro:content";
+
+export const dosenCollection = defineCollection({
+  type: "data", // GANTI JADI 'data' (karena pakai JSON)
+  schema: ({ image }) =>
+    z.object({
+      name: z.string(), // Nama lengkap beserta gelar
+      nip: z.string(),
+      jabatan: z.string(),
+      email: z.string().email(),
+      foto: image(), // Helper image() wajib untuk memproses gambar
+      order: z.number().default(99), // Opsional: untuk urutan
+    }),
+});
+
+
+================================================================================
+FILE PATH: src/layouts/MainLayout.astro
+================================================================================
+---
+// src/layouts/MainLayout.astro
+import BaseLayout from "./BaseLayout.astro";
+import Navbar from "../components/common/Navbar.astro";
+import Footer from "../components/common/Footer.astro";
+
+// Meneruskan props title ke BaseLayout
+const {
+  title,
+  description,
+  transparentMode = false,
+  isContentPage = false,
+} = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <Navbar transparentMode={transparentMode} isContentPage={isContentPage} />
+
+  <main
+    class:list={[
+      "min-h-screen w-full",
+      transparentMode ? "pt-0" : "pt-20 md:pt-24",
+    ]}
+  >
+    <slot />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+
+================================================================================
+FILE PATH: src/layouts/BaseLayout.astro
+================================================================================
+---
+// src/layouts/BaseLayout.astro
+
+// 1. Import Font & Style Global
+import "../assets/styles/global.css";
+import "@fontsource/plus-jakarta-sans/400.css";
+import "@fontsource/plus-jakarta-sans/600.css";
+import "@fontsource/plus-jakarta-sans/700.css";
+import "@fontsource/jetbrains-mono/400.css";
+
+const {
+  title = "Teknik Informatika",
+  description = "Website Resmi Prodi TIF",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>{title} | UIN Suska Riau</title>
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+  </head>
+
+  <body
+    class="bg-slate-950 text-slate-200 font-sans antialiased selection:bg-emerald-500 selection:text-white"
+  >
+    <slot />
+  </body>
+</html>
+
+
+================================================================================
+FILE PATH: src/components/home/Cta.astro
+================================================================================
+<section class="relative py-20 overflow-hidden">
+  <div class="absolute inset-0 z-0">
+    <img
+      src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop"
+      alt="Background Teknologi"
+      class="w-full h-full object-cover opacity-20 grayscale"
+    />
+
+    <div
+      class="absolute inset-0 bg-gradient-to-r from-slate-950 via-emerald-950/80 to-slate-950 mix-blend-multiply"
+    >
+    </div>
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-slate-950 via-transparent to-slate-950"
+    >
+    </div>
+  </div>
+
+  <div
+    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-500/20 rounded-full blur-[100px] pointer-events-none z-0"
+  >
+  </div>
+
+  <div class="container mx-auto px-6 relative z-10 text-center">
+    <div class="max-w-3xl mx-auto">
+      <h2
+        class="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight animate-fade-in-up"
+      >
+        Siap Memulai Masa Depan <br />
+        <span
+          class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400"
+          >Digitalmu Di Sini?</span
+        >
+      </h2>
+
+      <p
+        class="text-slate-300 text-lg mb-10 leading-relaxed animate-fade-in-up"
+        style="animation-delay: 0.1s;"
+      >
+        Bergabunglah dengan ratusan teknolog muda yang sedang membangun
+        peradaban digital. Kuota terbatas untuk gelombang tahun ini.
+      </p>
+
+      <div
+        class="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up"
+        style="animation-delay: 0.2s;"
+      >
+        <a
+          href="/pendaftaran"
+          class="px-10 py-4 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50 hover:-translate-y-1 transition-all w-full sm:w-auto text-lg group"
+        >
+          Daftar Sekarang
+          <span
+            class="inline-block ml-2 transition-transform group-hover:translate-x-1"
+            >→</span
+          >
+        </a>
+
+        <a
+          href="/brosur.pdf"
+          target="_blank"
+          class="px-10 py-4 rounded-full border border-slate-600 hover:border-white text-slate-300 hover:text-white font-semibold hover:bg-white/5 transition-all w-full sm:w-auto flex items-center justify-center gap-2"
+        >
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+            ></path></svg
+          >
+          Unduh Brosur
+        </a>
+      </div>
+
+      <p class="mt-8 text-slate-500 text-sm font-mono">
+        Pendaftaran Gelombang 1 ditutup: <span class="text-emerald-400"
+          >30 Agustus 2025</span
+        >
+      </p>
+    </div>
+  </div>
+</section>
+
+
+================================================================================
+FILE PATH: src/components/home/Hero.astro
+================================================================================
+---
+// src/components/home/Hero.astro
+import { heroData } from "../../data/home";
+import heroBg from "@/assets/images/dosen.jpg";
+---
+
+<section
+  class="relative h-svh w-full flex flex-col justify-start items-center overflow-hidden z-10 pt-32 md:pt-20"
+>
+  <div class="absolute inset-0 z-0">
+    <img
+      src={heroBg.src}
+      alt="Dosen Teknik Informatika UIN Suska Riau"
+      class="w-full h-full object-cover object-center"
+    />
+
+    <div
+      class="absolute inset-0 bg-linear-to-b from-slate-950/95 via-slate-900/50 to-transparent"
+    >
+    </div>
+
+    <div
+      class="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-slate-950 via-slate-950/80 to-transparent z-20 pointer-events-none"
+    >
+    </div>
+  </div>
+
+  <div class="relative z-20 container mx-auto px-6 text-center">
+    <div class="animate-fade-in-up">
+      <span
+        class="text-emerald-400 font-bold tracking-[0.2em] text-[10px] md:text-xs uppercase border-b border-emerald-500/30 pb-1"
+      >
+        Program Studi Sarjana (S1)
+      </span>
+    </div>
+
+    <div
+      class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 backdrop-blur-sm animate-fade-in-up mx-auto mb-2"
+      style="animation-delay: 0.1s;"
+    >
+      <span class="relative flex h-1.5 w-1.5">
+        <span
+          class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"
+        ></span>
+        <span
+          class="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"
+        ></span>
+      </span>
+      <span
+        class="text-emerald-300 text-[10px] font-bold tracking-widest uppercase"
+      >
+        Terakreditasi Unggul <span class="text-slate-500 mx-1">|</span> LAM INFOKOM
+      </span>
+    </div>
+
+    <h1
+      class="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight mb-2 max-w-6xl mx-auto font-sans animate-fade-in-up drop-shadow-lg"
+      style="animation-delay: 0.2s;"
+    >
+      Membangun Peradaban Digital <span
+        class="text-transparent bg-clip-text bg-linear-to-r from-emerald-400 to-cyan-400"
+        >Rabbani</span
+      >
+    </h1>
+
+    <p
+      class="text-slate-100 text-sm md:text-base max-w-4xl mx-auto mb-40 leading-relaxed animate-fade-in-up drop-shadow-md font-medium"
+      style="animation-delay: 0.3s;"
+    >
+      {heroData.description}
+    </p>
+
+    <div
+      class="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up mt-1"
+      style="animation-delay: 0.4s;"
+    >
+      <a
+        href="/pendaftaran"
+        class="px-8 py-3 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold shadow-lg shadow-emerald-900/50 hover:-translate-y-1 transition-all text-sm w-full sm:w-auto"
+      >
+        {heroData.secondaryCta}
+      </a>
+      <a
+        href="/profil"
+        class="px-8 py-3 rounded-full border border-slate-300 hover:border-white text-slate-100 hover:text-white font-semibold hover:bg-white/10 transition-all text-sm w-full sm:w-auto backdrop-blur-sm"
+      >
+        {heroData.primaryCta}
+      </a>
+    </div>
+  </div>
+</section>
+
+
+================================================================================
+FILE PATH: src/components/home/Features.astro
+================================================================================
+---
+// src/components/home/Features.astro
+import { featuresData } from "../../data/home";
+---
+
+<section class="relative py-24 bg-slate-950 overflow-hidden">
+  <div
+    class="absolute inset-0 opacity-[0.03]"
+    style="background-image: radial-gradient(#10b981 1px, transparent 1px); background-size: 32px 32px;"
+  >
+  </div>
+
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2
+        class="text-emerald-400 font-bold tracking-widest text-xs uppercase mb-3 animate-fade-in-up"
+      >
+        Kenapa Memilih Kami?
+      </h2>
+      <h3
+        class="text-3xl md:text-4xl font-bold text-white mb-6 animate-fade-in-up"
+        style="animation-delay: 0.1s;"
+      >
+        Keunggulan Akademik & <br />
+        <span
+          class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400"
+          >Lingkungan Belajar Terbaik</span
+        >
+      </h3>
+      <p
+        class="text-slate-400 text-sm md:text-base leading-relaxed animate-fade-in-up"
+        style="animation-delay: 0.2s;"
+      >
+        Kami menggabungkan keunggulan teknologi mutakhir dengan nilai-nilai
+        spiritual untuk menciptakan lulusan yang kompeten dan berintegritas.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      {
+        featuresData.map((feature, index) => (
+          <div
+            class="group p-8 rounded-2xl bg-slate-900/50 border border-slate-800 hover:border-emerald-500/50 hover:bg-slate-900/80 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-emerald-500/10 flex flex-col items-start gap-4 animate-fade-in-up"
+            style={`animation-delay: ${0.2 + index * 0.1}s;`}
+          >
+            <div class="w-12 h-12 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white transition-colors duration-300">
+              <Fragment set:html={feature.icon} />
+            </div>
+
+            <div>
+              <h4 class="text-xl font-bold text-slate-100 mb-3 group-hover:text-white transition-colors">
+                {feature.title}
+              </h4>
+              <p class="text-slate-400 text-sm leading-relaxed group-hover:text-slate-300 transition-colors">
+                {feature.description}
+              </p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+
+================================================================================
+FILE PATH: src/components/home/Stats.astro
+================================================================================
+---
+// src/components/home/Stats.astro
+import { statsData } from "../../data/home";
+---
+
+<section id="stats" class="relative -mt-14 z-30 pb-12">
+  <div class="container mx-auto px-6 relative">
+    <div
+      class="bg-slate-900/80 backdrop-blur-md border border-slate-800/50 rounded-2xl overflow-hidden shadow-2xl border-t"
+    >
+      <div
+        class="px-6 py-4 border-b border-slate-800/50 flex flex-col md:flex-row justify-between items-center bg-slate-900/50 gap-2"
+      >
+        <h3
+          class="text-sm font-bold text-white uppercase tracking-widest flex items-center gap-2"
+        >
+          <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"
+          ></span>
+          Statistik Akademik
+        </h3>
+        <span class="text-xs text-slate-500 font-mono"> 2025 </span>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-slate-800/50">
+        {
+          statsData.map((stat) => (
+            <div class="p-6 text-center group hover:bg-slate-800/50 transition duration-300">
+              <div class="text-3xl md:text-4xl font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">
+                {stat.value}
+              </div>
+              <div class="text-xs md:text-sm text-slate-300 font-medium uppercase tracking-wider group-hover:text-white transition-colors">
+                {stat.label}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+
+================================================================================
+FILE PATH: src/components/home/News.astro
+================================================================================
+---
+// src/components/home/News.astro
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  items: CollectionEntry<"berita">[];
+}
+
+// Terima data dari Parent (index.astro / berita/index.astro)
+const { items } = Astro.props;
+
+// Helper format tanggal
+function formatDate(date: Date) {
+  return new Intl.DateTimeFormat("id-ID", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(date);
+}
+---
+
+<section class="container mx-auto px-6 py-20">
+  <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+    {
+      items.map((post) => (
+        <article class="group bg-slate-900/50 border border-slate-800 rounded-2xl overflow-hidden hover:border-emerald-500/40 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-emerald-900/10">
+          <a href={`/berita/${post.slug}`} class="block h-full flex-col">
+            <div class="relative h-48 overflow-hidden">
+              <img
+                src={post.data.image}
+                alt={post.data.title}
+                class="h-full w-full object-cover transform group-hover:scale-110 transition duration-500"
+                loading="lazy"
+              />
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 text-[10px] font-bold uppercase tracking-widest bg-emerald-600 text-white rounded-full shadow-lg">
+                  {post.data.category}
+                </span>
+              </div>
+            </div>
+
+            <div class="p-6 flex flex-col grow">
+              <div class="flex items-center gap-2 text-slate-500 text-xs mb-3 font-mono">
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
+                {formatDate(post.data.date)}
+              </div>
+
+              <h2 class="font-bold text-lg text-white line-clamp-2 mb-3 group-hover:text-emerald-400 transition-colors">
+                {post.data.title}
+              </h2>
+
+              <p class="text-sm text-slate-400 line-clamp-3 mb-4 grow leading-relaxed">
+                {post.data.excerpt}
+              </p>
+
+              <div class="text-emerald-400 text-sm font-semibold flex items-center gap-1 mt-auto">
+                Baca Selengkapnya
+                <svg
+                  class="w-4 h-4 transition-transform group-hover:translate-x-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </div>
+            </div>
+          </a>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+
+================================================================================
+FILE PATH: src/components/common/PageHero.astro
+================================================================================
+---
+// src/components/common/PageHero.astro
+import Breadcrumbs from "./Breadcrumbs.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+  bgImage?: string; // Opsional: URL gambar background khusus
+}
+
+const {
+  title,
+  description,
+  bgImage = "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop", // Default BG (Abstrak Tech)
+} = Astro.props;
+---
+
+<section
+  class="relative pt-32 pb-20 md:pt-40 md:pb-24 overflow-hidden bg-slate-950"
+>
+  <div class="absolute inset-0 z-0">
+    <img
+      src={bgImage}
+      alt="Background Header"
+      class="w-full h-full object-cover opacity-20 grayscale"
+    />
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-slate-950/90 via-slate-950/80 to-slate-950"
+    >
+    </div>
+  </div>
+
+  <div class="container mx-auto px-6 relative z-10 text-center">
+    <div class="flex justify-center mb-6">
+      <Breadcrumbs title={title} />
+    </div>
+
+    <h1
+      class="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight font-sans animate-fade-in-up"
+    >
+      {title}
+    </h1>
+
+    {
+      description && (
+        <p
+          class="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed animate-fade-in-up"
+          style="animation-delay: 0.1s;"
+        >
+          {description}
+        </p>
+      )
+    }
+  </div>
+</section>
+
+
+================================================================================
+FILE PATH: src/components/common/Breadcrumbs.astro
+================================================================================
+---
+const currentPath = Astro.url.pathname;
+const paths = currentPath.split("/").filter((entry) => entry !== "");
+const { title } = Astro.props;
+---
+
+<nav aria-label="Breadcrumb" class="mb-4">
+  <ol class="flex items-center space-x-2 text-sm text-slate-500 font-mono">
+    <li>
+      <a href="/" class="hover:text-emerald-600 transition">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-4 w-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+          ></path>
+        </svg>
+      </a>
+    </li>
+
+    {
+      paths.map((path, index) => {
+        const isLast = index === paths.length - 1;
+        const href = `/${paths.slice(0, index + 1).join("/")}`;
+
+        // Ubah "visi-misi" jadi "Visi Misi" (Capitalize)
+        const label = path
+          .replace(/-/g, " ")
+          .replace(/\b\w/g, (l) => l.toUpperCase());
+
+        return (
+          <li class="flex items-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-4 w-4 mx-1 text-slate-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+
+            {isLast ? (
+              <span class="text-emerald-600 font-semibold cursor-default">
+                {title || label}
+              </span>
+            ) : (
+              <a href={href} class="hover:text-emerald-600 transition">
+                {label}
+              </a>
+            )}
+          </li>
+        );
+      })
+    }
+  </ol>
+</nav>
+
+
+================================================================================
+FILE PATH: src/components/common/Navbar.astro
+================================================================================
+---
+// File: src/components/common/Navbar.astro
+import { Image } from "astro:assets";
+// Pastikan path ini benar (Mundur 2 folder)
+import logoImage from "../../assets/images/logo/uin-suska.png";
+
+import { menuItems, siteConfig } from "../../data/navigation";
+
+// PROPS
+const { transparentMode = false, isContentPage = false } = Astro.props;
+
+// LOGIC STYLE VISUAL
+const contentStyle = "bg-slate-900 border-b border-slate-800";
+const defaultStyle =
+  "bg-slate-900/95 backdrop-blur-md border-white/10 shadow-sm";
+const transparentStyle = "bg-transparent border-transparent";
+
+const currentPath = Astro.url.pathname;
+const isActive = (path: string) => {
+  if (path === "/") return currentPath === "/";
+  return currentPath.startsWith(path);
+};
+---
+
+<header
+  id="main-header"
+  data-transparent-mode={transparentMode}
+  class:list={[
+    "fixed w-full top-0 z-50 transition-all duration-300",
+    transparentMode
+      ? transparentStyle
+      : isContentPage
+        ? contentStyle
+        : defaultStyle,
+  ]}
+>
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+    <a
+      href="/"
+      class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 rounded-lg p-1"
+    >
+      <div
+        class="transition-transform group-hover:scale-110 duration-300 group-active:scale-95"
+      >
+        <Image
+          src={logoImage}
+          alt={`Lambang ${siteConfig.title}`}
+          class="w-9 h-9 object-contain drop-shadow-md"
+        />
+      </div>
+
+      <div class="flex flex-col">
+        <span
+          class:list={[
+            "text-white font-bold text-lg leading-tight tracking-tight group-hover:text-emerald-400 transition font-sans",
+            !isContentPage && "shadow-black drop-shadow-md",
+          ]}
+        >
+          {siteConfig.title}
+        </span>
+      </div>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-6" aria-label="Main Navigation">
+      <ul class="flex gap-6 items-center">
+        {
+          menuItems.map((item) => (
+            <li class="relative group focus-within:opacity-100">
+              <a
+                href={item.path}
+                class:list={[
+                  "text-sm font-medium transition-colors duration-200 flex items-center gap-1 py-2 font-sans focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 rounded",
+                  !isContentPage && "shadow-black drop-shadow-sm",
+                  isActive(item.path)
+                    ? "text-emerald-400 font-bold"
+                    : "text-slate-100 hover:text-emerald-300",
+                ]}
+              >
+                {item.title}
+                {item.children && (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-3 w-3 opacity-70 group-hover:rotate-180 group-focus-within:rotate-180 transition-transform"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                )}
+              </a>
+
+              {/* Dropdown Desktop */}
+              {item.children && (
+                <div class="absolute left-0 mt-0 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 transform origin-top-left translate-y-2 group-hover:translate-y-0 group-focus-within:translate-y-0 pt-2">
+                  <div class="bg-slate-900 border border-slate-700 rounded-lg shadow-xl overflow-hidden p-1">
+                    {item.children.map((subItem) => (
+                      <a
+                        href={subItem.path}
+                        class="block px-4 py-2 text-sm text-slate-300 hover:bg-emerald-600 hover:text-white focus:bg-emerald-600 focus:text-white rounded-md transition-colors font-sans focus:outline-none"
+                      >
+                        {subItem.title}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+
+      <div class="flex items-center gap-4">
+        <button
+          id="search-btn"
+          class="text-slate-100 hover:text-emerald-400 transition p-2 rounded-full hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
+          aria-label="Cari Informasi"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+        </button>
+
+        <a
+          href={siteConfig.siakadUrl}
+          target="_blank"
+          class="hidden lg:block bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-4 py-2 rounded-full transition shadow-lg shadow-emerald-900/20 font-sans focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
+        >
+          SIAKAD
+        </a>
+      </div>
+    </nav>
+
+    <button
+      id="mobile-menu-btn"
+      class="md:hidden text-slate-100 hover:text-emerald-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 rounded p-1"
+      aria-label="Buka Menu Navigasi"
+    >
+      <svg
+        class="w-7 h-7"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </div>
+
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden bg-slate-900 border-t border-slate-800 absolute w-full left-0 top-full shadow-xl h-[calc(100vh-64px)] overflow-y-auto"
+  >
+    <ul class="flex flex-col p-4 space-y-1 pb-20">
+      <li class="mb-4 pb-4 border-b border-slate-800">
+        <div class="relative">
+          <input
+            type="text"
+            placeholder="Cari info..."
+            class="w-full bg-slate-800 text-slate-200 rounded-lg py-2.5 px-4 pl-10 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm font-sans border border-slate-700"
+          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 absolute left-3 top-3.5 text-slate-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+        </div>
+      </li>
+      {
+        menuItems.map((item) => (
+          <li>
+            {item.children ? (
+              // FIX: Pakai 'group' saja (tanpa /mobile)
+              <details class="group">
+                <summary class="flex justify-between items-center text-slate-300 py-3 px-3 hover:bg-slate-800 rounded-lg cursor-pointer font-sans font-medium transition-colors focus:outline-none focus:bg-slate-800">
+                  {item.title}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-4 w-4 transition-transform group-open:rotate-180 text-slate-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </summary>
+
+                <div class="pl-4 border-l-2 border-slate-700 ml-3 mt-1 space-y-1">
+                  {item.children.map((subItem) => (
+                    <a
+                      href={subItem.path}
+                      class="block text-sm text-slate-400 hover:text-emerald-400 py-2 pl-2 font-sans focus:outline-none focus:text-emerald-400"
+                    >
+                      {subItem.title}
+                    </a>
+                  ))}
+                </div>
+              </details>
+            ) : (
+              // FIX: Kode link single dikembalikan (jangan pakai ...)
+              <a
+                href={item.path}
+                class:list={[
+                  "block py-3 px-3 rounded-lg font-sans font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500",
+                  isActive(item.path)
+                    ? "bg-emerald-600/10 text-emerald-400 font-bold border-l-4 border-emerald-500"
+                    : "text-slate-300 hover:bg-slate-800",
+                ]}
+              >
+                {item.title}
+              </a>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</header>
+
+<div
+  id="search-overlay"
+  class="fixed inset-0 z-100 bg-slate-900/60 backdrop-blur-sm hidden items-start justify-center pt-24 px-4 opacity-0 transition-opacity duration-300"
+>
+  <div
+    class="w-full max-w-xl bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl transform scale-95 transition-all duration-300 flex flex-col relative"
+    id="search-container"
+  >
+    <div class="relative border-b border-slate-700 p-4">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6 absolute left-6 top-5 text-emerald-500"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+      </svg>
+      <input
+        type="text"
+        id="global-search-input"
+        placeholder="Cari Dosen, Berita, atau Dokumen..."
+        class="w-full bg-transparent text-white text-lg rounded-lg py-1 pl-12 pr-12 focus:outline-none placeholder-slate-500 font-sans h-10"
+        autocomplete="off"
+      />
+      <button
+        id="close-search"
+        class="absolute right-4 top-4 text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 p-1 rounded-md transition"
+      >
+        <span class="sr-only">Tutup</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+            clip-rule="evenodd"></path>
+        </svg>
+      </button>
+    </div>
+    <div class="p-4 bg-slate-800/50 rounded-b-2xl">
+      <p
+        class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3 ml-2"
+      >
+        Saran Cepat
+      </p>
+      <div class="space-y-1">
+        <a
+          href="/akademik/kurikulum"
+          class="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-700/50 group transition-colors"
+        >
+          <div
+            class="bg-emerald-500/10 p-2 rounded-md text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white transition-colors"
+          >
+            <span class="text-xs font-bold">K</span>
+          </div>
+          <span
+            class="text-slate-200 text-sm font-medium group-hover:text-emerald-400"
+            >Kurikulum 2025</span
+          >
+        </a>
+      </div>
+      <div
+        class="mt-4 pt-3 border-t border-slate-700/50 flex justify-between items-center text-xs text-slate-500"
+      >
+        <span
+          >Tekan <kbd class="font-mono bg-slate-700 px-1 rounded text-slate-300"
+            >Esc</kbd
+          > untuk tutup</span
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../../scripts/ui/navbar.js"></script>
+<script src="../../scripts/ui/search.js"></script>
+
+
+================================================================================
+FILE PATH: src/components/common/Footer.astro
+================================================================================
+---
+// src/components/Footer.astro
+import { Image } from "astro:assets";
+import {
+  footerLinks,
+  externalLinks,
+  contactConfig,
+  akreditasiConfig,
+} from "@/data/footer";
+
+// Pastikan path ini benar
+import logoUin from "@/assets/images/logo/uin-suska.png";
+import logoBlu from "@/assets/images/partners/blu.svg";
+import logoKemenag from "@/assets/images/partners/kemenag-berdampak.png";
+import logoUnggul from "@/assets/images/partners/akreditasi-unggul.png";
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="relative bg-slate-950 text-slate-200 overflow-hidden font-sans">
+  <div
+    class="pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.05]"
+  >
+    <Image
+      src={logoUin}
+      alt=""
+      aria-hidden="true"
+      class="w-[500px] max-w-full grayscale"
+    />
+  </div>
+
+  <div class="relative container mx-auto px-6 pt-12 md:pt-16 pb-6 md:pb-8">
+    <div class="grid gap-10 md:grid-cols-3 mb-12">
+      <div class="space-y-6">
+        <div>
+          <span
+            class="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-500 mb-2 block"
+          >
+            Program Studi
+          </span>
+
+          <h3
+            class="text-xl md:text-2xl font-bold text-white leading-tight font-sans"
+          >
+            Teknik Informatika
+          </h3>
+
+          <div class="mt-3 flex items-start gap-3">
+            <div class="w-0.5 h-10 bg-slate-800 rounded-full mt-1"></div>
+
+            <p class="text-sm text-slate-400 leading-relaxed">
+              Fakultas Sains dan Teknologi<br />
+              <span class="text-slate-200 font-medium"
+                >UIN Sultan Syarif Kasim Riau</span
+              >
+            </p>
+          </div>
+        </div>
+
+        <div class="relative pl-4 border-l-2 border-emerald-500/30">
+          <p class="text-sm text-slate-300 italic leading-relaxed">
+            "Mengintegrasikan keilmuan informatika dengan nilai-nilai Keislaman
+            untuk peradaban masa depan."
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-8">
+        <div>
+          <h4 class="text-sm font-semibold uppercase tracking-wider text-white">
+            Tautan Cepat
+          </h4>
+          <div class="mt-1 h-0.5 w-12 bg-emerald-500"></div>
+          <ul class="mt-4 space-y-2 text-sm">
+            {
+              footerLinks.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    class="hover:text-emerald-400 transition block"
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-semibold uppercase tracking-wider text-white">
+            Sistem & Institusi
+          </h4>
+          <div class="mt-1 h-0.5 w-12 bg-emerald-500"></div>
+          <ul class="mt-4 space-y-2 text-sm">
+            {
+              externalLinks.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="group inline-flex items-center gap-1.5 hover:text-emerald-400 transition"
+                  >
+                    {link.name}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-3 w-3 text-slate-500 group-hover:text-emerald-400 transition-colors"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                      />
+                    </svg>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="text-sm font-semibold uppercase tracking-wider text-white">
+          Hubungi Kami
+        </h4>
+        <div class="mt-1 h-0.5 w-12 bg-emerald-500"></div>
+        <address class="mt-4 not-italic text-sm text-slate-300 leading-relaxed">
+          {contactConfig.address}
+        </address>
+        <div class="mt-4 flex flex-col gap-2 text-sm">
+          <a
+            href={`mailto:${contactConfig.email}`}
+            class="flex items-center gap-2 hover:text-emerald-400 transition"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-4 w-4 text-emerald-500"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              ><path
+                d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
+              ></path><path
+                d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
+              ></path></svg
+            >
+            {contactConfig.email}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t border-slate-800 py-8 mb-2">
+      <div
+        class="flex flex-wrap items-center justify-center gap-8 md:gap-12 opacity-100"
+      >
+        <Image
+          src={logoUin}
+          alt="UIN Sultan Syarif Kasim Riau"
+          class="h-14 w-auto object-contain drop-shadow-md hover:scale-110 transition-transform duration-300"
+        />
+
+        <div class="h-10 w-px bg-slate-800 hidden md:block"></div>
+
+        <Image
+          src={logoBlu}
+          alt="BLU Speed"
+          class="h-12 w-auto object-contain drop-shadow-md hover:scale-110 transition-transform duration-300"
+        />
+
+        <Image
+          src={logoKemenag}
+          alt="Kementerian Agama RI"
+          class="h-12 w-auto object-contain drop-shadow-md hover:scale-110 transition-transform duration-300"
+        />
+
+        <div class="h-10 w-px bg-slate-800 hidden md:block"></div>
+
+        <Image
+          src={logoUnggul}
+          alt="Akreditasi Unggul"
+          title={akreditasiConfig.tooltip}
+          class="h-16 w-auto object-contain drop-shadow-md hover:scale-110 transition-transform duration-300"
+        />
+      </div>
+    </div>
+
+    <div
+      class="border-t border-slate-900 pt-6 text-center text-xs text-slate-500"
+    >
+      © {currentYear} Program Studi Teknik Informatika — UIN Sultan Syarif Kasim Riau
+    </div>
+  </div>
+</footer>
+
+
+================================================================================
+FILE PATH: src/components/dosen/DosenCard.astro
+================================================================================
+---
+// src/components/dosen/DosenCard.astro
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  // Karena type: 'data', kita akses langsung, bukan .data di level atas kadang berbeda sedikit tergantung versi,
+  // tapi biasanya structure collection entry untuk data tetap { id, data: { ... } }
+  item: CollectionEntry<"dosen">;
+}
+
+const { item } = Astro.props;
+const { name, nip, jabatan, email, foto } = item.data;
+---
+
+<div
+  class="group bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col items-center text-center hover:border-emerald-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-900/20"
+>
+  <div class="relative w-24 h-24 mb-4">
+    <div
+      class="absolute inset-0 bg-emerald-500 rounded-full blur-lg opacity-20 group-hover:opacity-40 transition-opacity"
+    >
+    </div>
+
+    <Image
+      src={foto}
+      alt={name}
+      class="relative w-full h-full object-cover rounded-full border-2 border-slate-700 group-hover:border-emerald-500 transition-colors"
+      width={150}
+      height={150}
+    />
+  </div>
+
+  <h3
+    class="text-white font-bold text-lg leading-tight mb-1 group-hover:text-emerald-400 transition-colors"
+  >
+    {name}
+  </h3>
+
+  <span
+    class="text-emerald-500 text-xs font-bold uppercase tracking-wider mb-2"
+  >
+    {jabatan}
+  </span>
+
+  <p
+    class="text-slate-500 text-xs font-mono bg-slate-800 px-2 py-1 rounded mb-3"
+  >
+    NIP: {nip}
+  </p>
+
+  <a
+    href={`mailto:${email}`}
+    class="text-slate-400 text-sm hover:text-white flex items-center gap-2 transition-colors mt-auto"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-4 w-4"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+    >
+      <path
+        d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
+      ></path>
+      <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+    </svg>
+    {email}
+  </a>
+</div>
+
+
+================================================================================
+FILE PATH: src/components/dosen/DosenGrid.astro
+================================================================================
+---
+import type { CollectionEntry } from "astro:content";
+import DosenCard from "./DosenCard.astro";
+
+interface Props {
+  items: CollectionEntry<"dosen">[];
+}
+
+const { items } = Astro.props;
+---
+
+<section class="py-20">
+  <div class="container mx-auto px-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {items.map((item) => <DosenCard item={item} />)}
+    </div>
+  </div>
+</section>
+
+
+================================================================================
+FILE PATH: src/components/profile/VisiMisi.astro
+================================================================================
+---
+interface Props {
+  visi: string;
+  misi: string[];
+}
+
+const { visi, misi } = Astro.props;
+---
+
+<div class="grid md:grid-cols-5 gap-8 mb-16 animate-fade-in-up">
+  <!-- VISI -->
+  <div
+    class="md:col-span-2 bg-linear-to-br from-emerald-900/20 to-slate-900 border border-emerald-500/20 p-8 rounded-2xl relative overflow-hidden group hover:border-emerald-500/40 transition-colors"
+  >
+    <div
+      class="absolute top-0 right-0 w-24 h-24 bg-emerald-500/10 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"
+    >
+    </div>
+
+    <h2
+      class="text-emerald-400 font-bold tracking-widest text-xs uppercase mb-4 flex items-center gap-2"
+    >
+      <span class="w-8 h-px bg-emerald-500"></span> Visi Kami
+    </h2>
+
+    <p class="text-white text-lg font-medium italic leading-relaxed">
+      "{visi}"
+    </p>
+  </div>
+
+  <!-- MISI -->
+  <div
+    class="md:col-span-3 bg-slate-900/50 border border-slate-800 p-8 rounded-2xl hover:border-slate-700 transition-colors"
+  >
+    <h2
+      class="text-cyan-400 font-bold tracking-widest text-xs uppercase mb-6 flex items-center gap-2"
+    >
+      <span class="w-8 h-px bg-cyan-500"></span> Misi Kami
+    </h2>
+
+    <ul class="space-y-4">
+      {
+        misi.map((item, index) => (
+          <li class="flex items-start gap-3 text-slate-300 text-sm md:text-base leading-relaxed">
+            <span class="shrink-0 w-6 h-6 rounded-full bg-slate-800 text-cyan-400 flex items-center justify-center text-xs font-bold mt-0.5">
+              {index + 1}
+            </span>
+            <span>{item}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>
+
+
+================================================================================
+FILE PATH: src/components/profile/History.astro
+================================================================================
+---
+interface Props {
+  title: string;
+  paragraphs: string[];
+}
+
+const { title, paragraphs } = Astro.props;
+---
+
+<div
+  class="prose prose-lg prose-invert max-w-none text-slate-300 animate-fade-in-up"
+>
+  <h3 class="text-2xl font-bold text-white mb-4">{title}</h3>
+
+  {paragraphs.map((text) => <p>{text}</p>)}
+</div>
+
+
+================================================================================
+FILE PATH: src/pages/index.astro
+================================================================================
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Stats from "../components/home/Stats.astro";
+import Hero from "@/components/home/Hero.astro";
+import Features from "@/components/home/Features.astro";
+import Cta from "@/components/home/Cta.astro";
+import News from "@/components/home/News.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+const allNews = await getCollection("berita", (entry) => {
+  return entry.data.draft !== true;
+});
+type BeritaItem = CollectionEntry<"berita">;
+const latestNews: BeritaItem[] = allNews
+  .sort(
+    (a: BeritaItem, b: BeritaItem) =>
+      b.data.date.valueOf() - a.data.date.valueOf()
+  )
+  .slice(0, 3);
+---
+
+<MainLayout
+  title="Beranda"
+  description="Website Resmi Teknik Informatika UIN Suska Riau"
+  transparentMode={true}
+>
+  <Hero />
+  <Stats />
+  <Features />
+  <News items={latestNews} />
+  <Cta />
+</MainLayout>
+
+
+================================================================================
+FILE PATH: src/pages/profil/dosen.astro
+================================================================================
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import PageHero from "../../components/common/PageHero.astro";
+import DosenGrid from "../../components/dosen/DosenGrid.astro";
+
+import { getCollection, type CollectionEntry } from "astro:content";
+
+type DosenItem = CollectionEntry<"dosen">;
+
+const dosenList: DosenItem[] = (await getCollection("dosen")).sort(
+  (a, b) => (a.data.order ?? 99) - (b.data.order ?? 99)
+);
+---
+
+<MainLayout
+  title="Dosen"
+  description="Daftar Dosen Program Studi Teknik Informatika"
+  isContentPage
+>
+  <PageHero
+    title="Dosen Teknik Informatika"
+    description="Tenaga pengajar profesional dan berkompeten di bidangnya."
+  />
+
+  <DosenGrid items={dosenList} />
+</MainLayout>
+
+
+================================================================================
+FILE PATH: src/pages/profil/index.astro
+================================================================================
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import PageHero from "../../components/common/PageHero.astro";
+import VisionMission from "../../components/profile/VisiMisi.astro";
+import History from "../../components/profile/History.astro";
+// 1. Import gambar lokal (Ganti nama jadi gedungBg agar tidak bingung)
+import gedungBg from "@/assets/images/gedung-lama.jpg";
+import { visi, misi, sejarah } from "../../content/profil";
+---
+
+<MainLayout
+  title="Profil Program Studi"
+  description="Sejarah, Visi, dan Misi Teknik Informatika UIN Suska Riau"
+  isContentPage={true}
+>
+  <PageHero
+    title="Profil Program Studi"
+    description="Mengenal lebih dekat sejarah dan arah tujuan Teknik Informatika UIN Suska Riau."
+    bgImage={gedungBg.src}
+  />
+
+  <div class="container mx-auto px-6 py-12 md:py-20">
+    <div class="max-w-5xl mx-auto">
+      <VisionMission visi={visi} misi={misi} />
+      <History title={sejarah.title} paragraphs={sejarah.paragraphs} />
+    </div>
+  </div>
+</MainLayout>
+
+
+================================================================================
+FILE PATH: src/pages/berita/[slug].astro
+================================================================================
+---
+// src/pages/berita/[slug].astro
+import MainLayout from "../../layouts/MainLayout.astro";
+import Breadcrumbs from "../../components/common/Breadcrumbs.astro"; // Opsional: Tambahkan breadcrumbs biar cantik
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("berita");
+
+  return posts.map((post) => ({
+    // 🔴 PERBAIKAN DISINI: Gunakan 'post.slug', bukan 'post.id'
+    // post.slug = "judul-berita" (Bersih, cocok untuk URL)
+    // post.id   = "judul-berita.md" (Kadang mengandung ekstensi file)
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<MainLayout
+  title={post.data.title}
+  description={post.data.excerpt}
+  isContentPage={true}
+>
+  <div class="w-full h-64 md:h-96 relative mb-8 bg-slate-900">
+    <img
+      src={post.data.image}
+      alt={post.data.title}
+      class="w-full h-full object-cover opacity-60"
+    />
+    <div class="absolute inset-0 bg-linear-to-t from-slate-950 to-transparent">
+    </div>
+
+    <div class="absolute bottom-0 left-0 p-6 md:p-12 container mx-auto">
+      <span
+        class="px-3 py-1 bg-emerald-600 text-white text-xs font-bold rounded-full mb-4 inline-block"
+      >
+        {post.data.category}
+      </span>
+      <h1 class="text-3xl md:text-5xl font-bold text-white leading-tight">
+        {post.data.title}
+      </h1>
+    </div>
+  </div>
+
+  <div class="container mx-auto px-6 pb-20">
+    <Breadcrumbs title={post.data.title} />
+
+    <article
+      class="prose prose-lg prose-invert prose-emerald mx-auto max-w-4xl"
+    >
+      <p class="text-slate-400 text-sm mb-8 border-b border-slate-800 pb-4">
+        Diposting pada:
+        {
+          new Intl.DateTimeFormat("id-ID", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+          }).format(post.data.date)
+        }
+      </p>
+
+      <Content />
+    </article>
+  </div>
+</MainLayout>
+
+
+================================================================================
+FILE PATH: src/pages/berita/index.astro
+================================================================================
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import News from "../../components/home/News.astro";
+
+import { getCollection, type CollectionEntry } from "astro:content";
+
+// Ambil semua berita yang tidak draft
+const allNews = await getCollection("berita", (entry) => {
+  return entry.data.draft !== true;
+});
+
+// Sort terbaru ke lama
+type BeritaItem = CollectionEntry<"berita">;
+
+const sortedNews: BeritaItem[] = allNews.sort(
+  (a: BeritaItem, b: BeritaItem) =>
+    b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<MainLayout
+  title="Berita & Agenda | Teknik Informatika"
+  description="Berita terbaru, agenda kegiatan, dan prestasi Teknik Informatika UIN Suska Riau"
+>
+  <section class="py-24 bg-slate-950">
+    <div class="container mx-auto px-6">
+      <div class="max-w-2xl mb-12">
+        <h1 class="text-4xl font-bold text-white mb-4">Berita & Agenda</h1>
+        <p class="text-slate-400">
+          Informasi terbaru seputar kegiatan akademik, prestasi, dan pengumuman
+          resmi.
+        </p>
+      </div>
+
+      <!-- Reuse komponen -->
+      <News items={sortedNews} />
+    </div>
+  </section>
+</MainLayout>
+
+
+================================================================================
+FILE PATH: src/scripts/ui/navbar.js
+================================================================================
+function initNavbar() {
+  const btn = document.getElementById("mobile-menu-btn");
+  const menu = document.getElementById("mobile-menu");
+  const header = document.getElementById("main-header");
+
+  if (btn && menu) {
+    btn.addEventListener("click", () => {
+      const isHidden = menu.classList.toggle("hidden");
+      document.body.style.overflow = isHidden ? '' : 'hidden';
+      
+      btn.setAttribute("aria-expanded", (!isHidden).toString());
+    });
+  }
+
+  const isTransparentMode = header?.dataset.transparentMode === "true";
+
+  if (isTransparentMode) {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        header?.classList.remove("bg-transparent", "border-transparent");
+        header?.classList.add("bg-slate-900/95", "backdrop-blur-md", "border-white/10", "shadow-sm");
+      } else {
+        header?.classList.add("bg-transparent", "border-transparent");
+        header?.classList.remove("bg-slate-900/95", "backdrop-blur-md", "border-white/10", "shadow-sm");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+  }
+}
+
+document.addEventListener('astro:page-load', initNavbar);
+initNavbar();
+
+================================================================================
+FILE PATH: src/scripts/ui/search.js
+================================================================================
+function initSearch() {
+  const searchBtn = document.getElementById("search-btn");
+  const closeSearch = document.getElementById("close-search");
+  const searchOverlay = document.getElementById("search-overlay");
+  const searchContainer = document.getElementById("search-container");
+  const searchInput = document.getElementById("global-search-input");
+
+  function toggleSearch() {
+    if (!searchOverlay) return;
+    
+    const isHidden = searchOverlay.classList.contains("hidden");
+    if (isHidden) {
+      searchOverlay.classList.remove("hidden");
+      setTimeout(() => {
+        searchOverlay.classList.remove("opacity-0");
+        searchContainer?.classList.remove("scale-95");
+        searchContainer?.classList.add("scale-100");
+        searchInput?.focus();
+      }, 10);
+      document.body.style.overflow = 'hidden';
+    } else {
+      // Tutup
+      searchOverlay.classList.add("opacity-0");
+      searchContainer?.classList.remove("scale-100");
+      searchContainer?.classList.add("scale-95");
+      setTimeout(() => {
+        searchOverlay.classList.add("hidden");
+        document.body.style.overflow = '';
+      }, 300);
+    }
+  }
+
+  searchBtn?.addEventListener("click", toggleSearch);
+  closeSearch?.addEventListener("click", toggleSearch);
+  
+  searchOverlay?.addEventListener("click", (e) => {
+    if (e.target === searchOverlay) toggleSearch();
+  });
+  
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !searchOverlay?.classList.contains("hidden")) {
+      toggleSearch();
+    }
+  });
+}
+
+document.addEventListener('astro:page-load', initSearch);
+initSearch();
+

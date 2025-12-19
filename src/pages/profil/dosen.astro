@@ -1,0 +1,26 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import PageHero from "../../components/common/PageHero.astro";
+import DosenGrid from "../../components/dosen/DosenGrid.astro";
+
+import { getCollection, type CollectionEntry } from "astro:content";
+
+type DosenItem = CollectionEntry<"dosen">;
+
+const dosenList: DosenItem[] = (await getCollection("dosen")).sort(
+  (a, b) => (a.data.order ?? 99) - (b.data.order ?? 99)
+);
+---
+
+<MainLayout
+  title="Dosen & Staff"
+  description="Daftar Dosen Program Studi Teknik Informatika"
+  isContentPage
+>
+  <PageHero
+    title="Dosen Teknik Informatika"
+    description="Tenaga pengajar profesional dan berkompeten di bidangnya."
+  />
+
+  <DosenGrid items={dosenList} />
+</MainLayout>

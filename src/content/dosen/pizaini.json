@@ -1,0 +1,12 @@
+{
+  "name": "Pizaini, S.T., M.Kom",
+  "nip": "198904212023211",
+  "jabatan": "Ketua Program Studi",
+  "email": "kaprodi@uin-suska.ac.id",
+  "foto": "/src/assets/images/dosen/pizaini.jpg",
+  "order": 1,
+  "pendidikan": [
+    "S1 Teknik Informatika - UIN Suska Riau",
+    "S2 Ilmu Komputer - IPB"
+  ]
+}

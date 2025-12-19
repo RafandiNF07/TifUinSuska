@@ -1,11 +1,31 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Navbar from "../components/navbar.astro";
-import Hero from "../components/hero.astro";
-import Footer from "../components/footer.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+import Stats from "../components/home/Stats.astro";
+import Hero from "@/components/home/Hero.astro";
+import Features from "@/components/home/Features.astro";
+import Cta from "@/components/home/Cta.astro";
+import News from "@/components/home/News.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+const allNews = await getCollection("berita", (entry) => {
+  return entry.data.draft !== true;
+});
+type BeritaItem = CollectionEntry<"berita">;
+const latestNews: BeritaItem[] = allNews
+  .sort(
+    (a: BeritaItem, b: BeritaItem) =>
+      b.data.date.valueOf() - a.data.date.valueOf()
+  )
+  .slice(0, 3);
 ---
-<Layout title="Beranda - Teknik Informatika UIN Suska">
-  <Navbar />
+
+<MainLayout
+  title="Beranda"
+  description="Website Resmi Teknik Informatika UIN Suska Riau"
+  transparentMode={true}
+>
   <Hero />
-  <Footer />
-</Layout>
+  <Stats />
+  <Features />
+  <News items={latestNews} />
+  <Cta />
+</MainLayout>

@@ -1,0 +1,31 @@
+---
+import "../assets/styles/global.css";
+import "@fontsource/plus-jakarta-sans/400.css";
+import "@fontsource/plus-jakarta-sans/600.css";
+import "@fontsource/plus-jakarta-sans/700.css";
+import "@fontsource/jetbrains-mono/400.css";
+
+const {
+  title = "Teknik Informatika",
+  description = "Website Resmi Prodi TIF",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>{title} | UIN Suska Riau</title>
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+  </head>
+
+  <body
+    class="bg-slate-950 text-slate-200 font-sans antialiased selection:bg-emerald-500 selection:text-white"
+  >
+    <slot />
+  </body>
+</html>
