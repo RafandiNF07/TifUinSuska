@@ -197,13 +197,29 @@ const isActive = (path: string) => {
         menuItems.map((item) => (
           <li>
             {item.children ? (
-              // FIX: Pakai 'group' saja (tanpa /mobile)
-              <details class="group">
-                <summary class="flex justify-between items-center text-slate-300 py-3 px-3 hover:bg-slate-800 rounded-lg cursor-pointer font-sans font-medium transition-colors focus:outline-none focus:bg-slate-800">
+              <details class="group" open={isActive(item.path)}>
+                {/* PERBAIKAN DISINI:
+                   Tambahkan logika isActive(item.path) pada class summary.
+                   Jika path cocok (misal sedang di /profil/dosen), maka judul "Profil" jadi hijau.
+                */}
+                <summary
+                  class:list={[
+                    "flex justify-between items-center py-3 px-3 hover:bg-slate-800 rounded-lg cursor-pointer font-sans font-medium transition-colors focus:outline-none focus:bg-slate-800 select-none",
+                    isActive(item.path)
+                      ? "text-emerald-400 font-bold bg-slate-800/50"
+                      : "text-slate-300",
+                  ]}
+                >
                   {item.title}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-4 w-4 transition-transform group-open:rotate-180 text-slate-500"
+                    class:list={[
+                      "h-4 w-4 transition-transform text-slate-500",
+                      // Putar panah otomatis jika aktif
+                      isActive(item.path)
+                        ? "rotate-180 text-emerald-500"
+                        : "group-open:rotate-180",
+                    ]}
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -221,7 +237,13 @@ const isActive = (path: string) => {
                   {item.children.map((subItem) => (
                     <a
                       href={subItem.path}
-                      class="block text-sm text-slate-400 hover:text-emerald-400 py-2 pl-2 font-sans focus:outline-none focus:text-emerald-400"
+                      class:list={[
+                        "block text-sm py-2 pl-2 font-sans focus:outline-none transition-colors rounded-r",
+                        // Highlight juga sub-item yang sedang aktif
+                        currentPath === subItem.path
+                          ? "text-emerald-400 font-bold bg-emerald-500/10 border-l-2 border-emerald-500 -ml-0.5"
+                          : "text-slate-400 hover:text-emerald-400",
+                      ]}
                     >
                       {subItem.title}
                     </a>
@@ -229,7 +251,7 @@ const isActive = (path: string) => {
                 </div>
               </details>
             ) : (
-              // FIX: Kode link single dikembalikan (jangan pakai ...)
+              // MENU TANPA ANAK (Beranda, Berita, dll) - Sudah Benar
               <a
                 href={item.path}
                 class:list={[

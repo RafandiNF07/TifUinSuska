@@ -4,8 +4,10 @@ import Stats from "../components/home/Stats.astro";
 import Hero from "@/components/home/Hero.astro";
 import Features from "@/components/home/Features.astro";
 import Cta from "@/components/home/Cta.astro";
-import News from "@/components/home/News.astro";
+import NewsGrid from "@/components/berita/NewsGrid.astro";
+
 import { getCollection, type CollectionEntry } from "astro:content";
+
 const allNews = await getCollection("berita", (entry) => {
   return entry.data.draft !== true;
 });
@@ -26,6 +28,11 @@ const latestNews: BeritaItem[] = allNews
   <Hero />
   <Stats />
   <Features />
-  <News items={latestNews} />
+  <NewsGrid
+    items={latestNews}
+    title="Kabar Dari Kampus"
+    subtitle="Ikuti perkembangan terbaru, prestasi mahasiswa, dan agenda akademik Program Studi."
+    showLink={true}
+  />
   <Cta />
 </MainLayout>

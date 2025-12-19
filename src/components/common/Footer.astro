@@ -1,5 +1,5 @@
 ---
-// src/components/Footer.astro
+// src/components/common/Footer.astro
 import { Image } from "astro:assets";
 import {
   footerLinks,
@@ -8,7 +8,7 @@ import {
   akreditasiConfig,
 } from "@/data/footer";
 
-// Pastikan path ini benar
+// Import gambar (Sesuai path anda)
 import logoUin from "@/assets/images/common/uin-suska.png";
 import logoBlu from "@/assets/images/partners/blu.svg";
 import logoKemenag from "@/assets/images/partners/kemenag-berdampak.png";
@@ -17,9 +17,11 @@ import logoUnggul from "@/assets/images/partners/akreditasi-unggul.png";
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="relative bg-slate-950 text-slate-200 overflow-hidden font-sans">
+<footer
+  class="relative bg-slate-950 text-slate-200 overflow-hidden font-sans py-10 md:pt-16 md:pb-8"
+>
   <div
-    class="pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.05]"
+    class="pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.03]"
   >
     <Image
       src={logoUin}
@@ -29,55 +31,71 @@ const currentYear = new Date().getFullYear();
     />
   </div>
 
-  <div class="relative container mx-auto px-6 pt-12 md:pt-16 pb-6 md:pb-8">
-    <div class="grid gap-10 md:grid-cols-3 mb-12">
-      <div class="space-y-6">
+  <div class="relative container mx-auto px-6">
+    <div class="grid gap-8 md:grid-cols-3 mb-12">
+      <div class="space-y-4 md:space-y-6">
         <div>
           <span
             class="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-500 mb-2 block"
           >
             Program Studi
           </span>
-
           <h3
             class="text-xl md:text-2xl font-bold text-white leading-tight font-sans"
           >
             Teknik Informatika
           </h3>
 
-          <div class="mt-3 flex items-start gap-3">
-            <div class="w-0.5 h-10 bg-slate-800 rounded-full mt-1"></div>
-
-            <p class="text-sm text-slate-400 leading-relaxed">
-              Fakultas Sains dan Teknologi<br />
-              <span class="text-slate-200 font-medium"
-                >UIN Sultan Syarif Kasim Riau</span
-              >
+          <div class="mt-2 flex items-center gap-3">
+            <div class="w-0.5 h-10 bg-slate-800 rounded-full"></div>
+            <p class="text-xs md:text-sm text-slate-400">
+              Fakultas Sains dan Teknologi <br />
+              <span class="text-slate-200">UIN Sultan Syarif Kasim Riau</span>
             </p>
           </div>
         </div>
 
-        <div class="relative pl-4 border-l-2 border-emerald-500/30">
+        <div
+          class="hidden md:block relative pl-4 border-l-2 border-emerald-500/30"
+        >
           <p class="text-sm text-slate-300 italic leading-relaxed">
             "Mengintegrasikan keilmuan informatika dengan nilai-nilai Keislaman
             untuk peradaban masa depan."
           </p>
         </div>
+
+        <p
+          class="md:hidden text-xs text-slate-500 italic border-l-2 border-slate-800 pl-3"
+        >
+          Integrasi Informatika & Nilai Keislaman.
+        </p>
       </div>
 
-      <div class="grid grid-cols-2 gap-8">
-        <div>
-          <h4 class="text-sm font-semibold uppercase tracking-wider text-white">
+      <div class="md:hidden space-y-4 border-t border-slate-900 pt-6 mt-2">
+        <details class="group">
+          <summary
+            class="list-none flex justify-between items-center font-semibold text-slate-100 cursor-pointer py-2"
+          >
             Tautan Cepat
-          </h4>
-          <div class="mt-1 h-0.5 w-12 bg-emerald-500"></div>
-          <ul class="mt-4 space-y-2 text-sm">
+            <svg
+              class="w-4 h-4 text-slate-500 transition-transform group-open:rotate-180"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"></path></svg
+            >
+          </summary>
+          <ul class="mt-2 space-y-2 pl-2 border-l border-slate-800 ml-1 mb-4">
             {
               footerLinks.map((link) => (
                 <li>
                   <a
                     href={link.href}
-                    class="hover:text-emerald-400 transition block"
+                    class="text-sm text-slate-400 hover:text-emerald-400 block py-1"
                   >
                     {link.name}
                   </a>
@@ -85,116 +103,202 @@ const currentYear = new Date().getFullYear();
               ))
             }
           </ul>
-        </div>
+        </details>
 
-        <div>
-          <h4 class="text-sm font-semibold uppercase tracking-wider text-white">
+        <details class="group">
+          <summary
+            class="list-none flex justify-between items-center font-semibold text-slate-100 cursor-pointer py-2"
+          >
             Sistem & Institusi
-          </h4>
-          <div class="mt-1 h-0.5 w-12 bg-emerald-500"></div>
-          <ul class="mt-4 space-y-2 text-sm">
+            <svg
+              class="w-4 h-4 text-slate-500 transition-transform group-open:rotate-180"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"></path></svg
+            >
+          </summary>
+          <ul class="mt-2 space-y-2 pl-2 border-l border-slate-800 ml-1 mb-4">
             {
               externalLinks.map((link) => (
                 <li>
                   <a
                     href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="group inline-flex items-center gap-1.5 hover:text-emerald-400 transition"
+                    class="text-sm text-slate-400 hover:text-emerald-400 block py-1"
                   >
                     {link.name}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="h-3 w-3 text-slate-500 group-hover:text-emerald-400 transition-colors"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                      />
-                    </svg>
                   </a>
                 </li>
               ))
             }
           </ul>
-        </div>
+        </details>
+
+        <details class="group">
+          <summary
+            class="list-none flex justify-between items-center font-semibold text-slate-100 cursor-pointer py-2"
+          >
+            Hubungi Kami
+            <svg
+              class="w-4 h-4 text-slate-500 transition-transform group-open:rotate-180"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"></path></svg
+            >
+          </summary>
+          <div class="mt-2 pl-2 border-l border-slate-800 ml-1 mb-4">
+            <p class="text-sm text-slate-400 leading-relaxed mb-2">
+              {contactConfig.address}
+            </p>
+            <a
+              href={`mailto:${contactConfig.email}`}
+              class="text-sm text-emerald-400 font-medium"
+              >{contactConfig.email}</a
+            >
+          </div>
+        </details>
       </div>
 
-      <div>
-        <h4 class="text-sm font-semibold uppercase tracking-wider text-white">
-          Hubungi Kami
-        </h4>
-        <div class="mt-1 h-0.5 w-12 bg-emerald-500"></div>
-        <address class="mt-4 not-italic text-sm text-slate-300 leading-relaxed">
-          {contactConfig.address}
-        </address>
-        <div class="mt-4 flex flex-col gap-2 text-sm">
-          <a
-            href={`mailto:${contactConfig.email}`}
-            class="flex items-center gap-2 hover:text-emerald-400 transition"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-4 w-4 text-emerald-500"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              ><path
-                d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
-              ></path><path
-                d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
-              ></path></svg
+      <div class="hidden md:contents">
+        <div class="grid grid-cols-2 gap-8">
+          <div>
+            <h4
+              class="text-sm font-semibold uppercase tracking-wider text-white"
             >
-            {contactConfig.email}
-          </a>
+              Tautan Cepat
+            </h4>
+            <div class="mt-1 h-0.5 w-8 bg-emerald-500"></div>
+            <ul class="mt-4 space-y-2 text-sm">
+              {
+                footerLinks.map((link) => (
+                  <li>
+                    <a
+                      href={link.href}
+                      class="text-slate-400 hover:text-emerald-400 transition"
+                    >
+                      {link.name}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+          <div>
+            <h4
+              class="text-sm font-semibold uppercase tracking-wider text-white"
+            >
+              Sistem
+            </h4>
+            <div class="mt-1 h-0.5 w-8 bg-emerald-500"></div>
+            <ul class="mt-4 space-y-2 text-sm">
+              {
+                externalLinks.map((link) => (
+                  <li>
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      class="text-slate-400 hover:text-emerald-400 transition flex items-center gap-1"
+                    >
+                      {link.name}
+                      <svg
+                        class="w-3 h-3 text-slate-600"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        />
+                      </svg>
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-semibold uppercase tracking-wider text-white">
+            Hubungi Kami
+          </h4>
+          <div class="mt-1 h-0.5 w-8 bg-emerald-500"></div>
+          <address
+            class="mt-4 not-italic text-sm text-slate-400 leading-relaxed"
+          >
+            {contactConfig.address}
+          </address>
+          <div class="mt-4 flex flex-col gap-2 text-sm">
+            <a
+              href={`mailto:${contactConfig.email}`}
+              class="flex items-center gap-2 hover:text-emerald-400 transition"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4 text-emerald-500"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
+                ></path>
+                <path
+                  d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
+                ></path>
+              </svg>
+              {contactConfig.email}
+            </a>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="border-t border-slate-800 py-8 mb-2">
+    <div class="border-t border-slate-900 pt-6 pb-6 md:pt-4 md:pb-4">
       <div
-        class="flex flex-wrap items-center justify-center gap-8 md:gap-12 opacity-100"
+        class="flex flex-wrap items-center justify-center gap-6 md:gap-12 opacity-80 md:opacity-100 scale-90 md:scale-100"
       >
         <Image
           src={logoUin}
-          alt="UIN Sultan Syarif Kasim Riau"
-          class="h-14 w-auto object-contain drop-shadow-md hover:scale-110 transition-transform duration-300"
+          alt="UIN Suska"
+          class="h-10 md:h-14 w-auto object-contain hover:scale-110 transition duration-300"
         />
-
-        <div class="h-10 w-px bg-slate-800 hidden md:block"></div>
-
+        <div class="h-8 w-px bg-slate-800 hidden md:block"></div>
         <Image
           src={logoBlu}
-          alt="BLU Speed"
-          class="h-12 w-auto object-contain drop-shadow-md hover:scale-110 transition-transform duration-300"
+          alt="BLU"
+          class="h-8 md:h-12 w-auto object-contain hover:scale-110 transition duration-300"
         />
-
         <Image
           src={logoKemenag}
-          alt="Kementerian Agama RI"
-          class="h-12 w-auto object-contain drop-shadow-md hover:scale-110 transition-transform duration-300"
+          alt="Kemenag"
+          class="h-8 md:h-12 w-auto object-contain hover:scale-110 transition duration-300"
         />
-
-        <div class="h-10 w-px bg-slate-800 hidden md:block"></div>
-
+        <div class="h-8 w-px bg-slate-800 hidden md:block"></div>
         <Image
           src={logoUnggul}
-          alt="Akreditasi Unggul"
-          title={akreditasiConfig.tooltip}
-          class="h-16 w-auto object-contain drop-shadow-md hover:scale-110 transition-transform duration-300"
+          alt="Unggul"
+          class="h-10 md:h-16 w-auto object-contain hover:scale-110 transition duration-300"
         />
       </div>
     </div>
 
-    <div
-      class="border-t border-slate-900 pt-6 text-center text-xs text-slate-500"
-    >
-      © {currentYear} Program Studi Teknik Informatika — UIN Sultan Syarif Kasim Riau
+    <div class="border-t border-slate-900 pt-6 text-center">
+      <p class="text-xs text-slate-500">
+        © {currentYear} Program Studi Teknik Informatika — UIN Sultan Syarif Kasim
+        Riau
+      </p>
     </div>
   </div>
 </footer>
