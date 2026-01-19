@@ -2,7 +2,7 @@
 import MainLayout from "../../layouts/MainLayout.astro";
 import PageHero from "../../components/common/PageHero.astro";
 import DosenGrid from "../../components/dosen/DosenGrid.astro";
-
+import FotoDosen from "@/assets/images/dosen.jpg";
 import { getCollection, type CollectionEntry } from "astro:content";
 
 type DosenItem = CollectionEntry<"dosen">;
@@ -20,6 +20,7 @@ const dosenList: DosenItem[] = (await getCollection("dosen")).sort(
   <PageHero
     title="Dosen Teknik Informatika"
     description="Tenaga pengajar profesional dan berkompeten di bidangnya."
+    bgImage={FotoDosen.src}
   />
 
   <DosenGrid items={dosenList} />

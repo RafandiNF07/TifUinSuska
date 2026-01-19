@@ -1,0 +1,243 @@
+---
+// src/pages/profil/struktur.astro
+import MainLayout from "@/layouts/MainLayout.astro";
+import PageHero from "@/components/common/PageHero.astro";
+
+// --- DATA (Tetap Sama) ---
+const pimpinan = {
+  kajur: { name: "Iwan Iskandar, S.T, M.T", role: "Ketua Jurusan" },
+  sekjur: { name: "Reski Mai Candra, S.T, M.Sc", role: "Sekretaris Jurusan" },
+  koordTA: {
+    name: "Fadhilah Syafria, S.T, M.Kom",
+    role: "Koordinator Tugas Akhir",
+  },
+  koordKP: { name: "Liza Afriyanti, M.Kom", role: "Koordinator Kerja Praktek" },
+};
+
+const laboran = {
+  kepala: { name: "Muhammad Affandes, S.T, M.T", role: "Kepala Laboratorium" },
+  members: [
+    { name: "Nazruddin Safaat H, M.T", role: "Koord. Lab Technopreneur" },
+    { name: "Suwanto Sanjaya, S.T, M.Kom", role: "Koord. Lab Data Science" },
+    { name: "Iis Afrianty, S.T, M.Sc", role: "Koord. Lab AI" },
+    { name: "Pizaini, S.T, M.Kom", role: "Koord. Lab Pemrograman" },
+  ],
+};
+
+const kbk = [
+  "KBK Sistem Cerdas",
+  "KBK Rekayasa Perangkat Lunak",
+  "KBK Teknologi Informasi",
+];
+
+const unitLain = ["Redaktur Jurnal CoreIT", "Penjaminan Mutu (PMP)"];
+
+// --- KOMPONEN BOX REUSABLE (Internal) ---
+// Desain kotak formal: Border slate, Background gelap, Teks tegas.
+---
+
+<MainLayout
+  title="Struktur Organisasi"
+  description="Struktur Organisasi Program Studi Teknik Informatika UIN Suska Riau."
+  isContentPage={true}
+>
+  <PageHero
+    title="Struktur Organisasi"
+    description="Bagan hierarki kepemimpinan dan manajemen Program Studi."
+  />
+
+  <section class="py-16 md:py-24 bg-slate-950 overflow-x-auto">
+    <div class="min-w-[1200px] px-8 pb-12 flex flex-col items-center">
+      <div class="flex flex-col items-center z-10">
+        <div
+          class="bg-slate-900 border border-slate-600 rounded-lg p-4 w-72 text-center shadow-sm relative"
+        >
+          <p class="font-bold text-white text-lg">{pimpinan.kajur.name}</p>
+          <p
+            class="text-emerald-500 text-sm uppercase font-bold tracking-wider mt-1"
+          >
+            {pimpinan.kajur.role}
+          </p>
+        </div>
+        <div class="h-12 w-px bg-slate-500"></div>
+      </div>
+
+      <div class="relative flex justify-center gap-32 w-full">
+        <div class="absolute top-0 left-[35%] right-[35%] h-px bg-slate-500">
+        </div>
+
+        <div class="flex flex-col items-center relative">
+          <div class="h-8 w-px bg-slate-500 absolute -top-0"></div>
+          <div
+            class="mt-8 bg-slate-900 border border-slate-600 rounded-lg p-3 w-64 text-center"
+          >
+            <p class="font-bold text-slate-100">{pimpinan.sekjur.name}</p>
+            <p class="text-slate-400 text-xs">{pimpinan.sekjur.role}</p>
+          </div>
+
+          <div class="flex flex-col items-center mt-0">
+            <div class="h-6 w-px bg-slate-500"></div>
+            <div class="w-48 h-px bg-slate-500"></div>
+            <div class="flex gap-4 mt-0">
+              <div class="flex flex-col items-center">
+                <div class="h-4 w-px bg-slate-500"></div>
+                <div
+                  class="bg-slate-900 border border-slate-700 rounded p-2 w-32 text-center"
+                >
+                  <p class="text-slate-300 text-xs font-medium">
+                    Adm. Akademik
+                  </p>
+                </div>
+              </div>
+              <div class="flex flex-col items-center">
+                <div class="h-4 w-px bg-slate-500"></div>
+                <div
+                  class="bg-slate-900 border border-slate-700 rounded p-2 w-32 text-center"
+                >
+                  <p class="text-slate-300 text-xs font-medium">Adm. Umum</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="w-px bg-slate-500 h-full absolute left-1/2 -ml-px top-0 z-0 hidden"
+        >
+        </div>
+
+        <div class="flex flex-col gap-6 relative mt-8">
+          <div class="absolute -top-8 left-1/2 h-8 w-px bg-slate-500"></div>
+
+          <div
+            class="bg-slate-900 border border-slate-600 rounded-lg p-3 w-64 text-center relative"
+          >
+            <p class="font-bold text-slate-100 text-sm">
+              {pimpinan.koordTA.name}
+            </p>
+            <p class="text-slate-400 text-[10px] uppercase">
+              {pimpinan.koordTA.role}
+            </p>
+          </div>
+
+          <div
+            class="bg-slate-900 border border-slate-600 rounded-lg p-3 w-64 text-center relative"
+          >
+            <div class="absolute -top-6 left-1/2 h-6 w-px bg-slate-500"></div>
+            <p class="font-bold text-slate-100 text-sm">
+              {pimpinan.koordKP.name}
+            </p>
+            <p class="text-slate-400 text-[10px] uppercase">
+              {pimpinan.koordKP.role}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col items-center w-full mt-8">
+        <div class="h-12 w-px bg-slate-500"></div>
+
+        <div class="w-[90%] h-px bg-slate-500 relative"></div>
+
+        <div class="grid grid-cols-6 gap-6 w-[95%] mt-0">
+          <div class="col-span-1 flex flex-col items-center">
+            <div class="h-8 w-px bg-slate-500"></div>
+            <div
+              class="bg-slate-900 border border-emerald-500/50 rounded-lg p-3 w-full text-center h-24 flex flex-col justify-center"
+            >
+              <p class="font-bold text-white text-xs leading-tight">
+                {laboran.kepala.name}
+              </p>
+              <p class="text-emerald-500 text-[10px] uppercase font-bold mt-1">
+                {laboran.kepala.role}
+              </p>
+            </div>
+
+            <div class="flex flex-col items-center w-full mt-0">
+              <div class="h-4 w-px bg-slate-500"></div>
+              <div class="flex flex-col gap-2 w-full">
+                {
+                  laboran.members.map((m) => (
+                    <div class="bg-slate-950 border border-slate-800 p-2 rounded text-center relative">
+                      <div class="absolute -top-2 left-1/2 h-2 w-px bg-slate-500" />
+                      <p class="text-slate-300 text-[10px] font-bold">
+                        {m.name}
+                      </p>
+                      <p class="text-slate-500 text-[9px]">{m.role}</p>
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+
+          {
+            kbk.map((k) => (
+              <div class="col-span-1 flex flex-col items-center">
+                <div class="h-8 w-px bg-slate-500" />
+                <div class="bg-slate-900 border border-slate-700 rounded-lg p-3 w-full text-center h-24 flex flex-col justify-center items-center group hover:border-slate-500 transition-colors">
+                  <div class="mb-2 text-emerald-500">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                      />
+                    </svg>
+                  </div>
+                  <p class="font-bold text-slate-200 text-xs leading-tight">
+                    {k}
+                  </p>
+                  <p class="text-[10px] text-slate-500 mt-1">
+                    Dosen Bidang Keahlian
+                  </p>
+                </div>
+              </div>
+            ))
+          }
+
+          {
+            unitLain.map((u) => (
+              <div class="col-span-1 flex flex-col items-center">
+                <div class="h-8 w-px bg-slate-500" />
+                <div class="bg-slate-900 border border-slate-700 rounded-lg p-3 w-full text-center h-24 flex flex-col justify-center items-center">
+                  <p class="font-bold text-slate-200 text-xs leading-tight">
+                    {u}
+                  </p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-6 border-t border-slate-900">
+    <div class="container mx-auto px-6 text-center">
+      <p class="text-xs text-slate-600 flex justify-center items-center gap-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-4 w-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          ></path></svg
+        >
+        Geser ke kanan untuk melihat struktur lengkap pada layar kecil.
+      </p>
+    </div>
+  </section>
+</MainLayout>

@@ -1,0 +1,223 @@
+---
+// src/pages/profil/prestasi.astro
+import MainLayout from "@/layouts/MainLayout.astro";
+import PageHero from "@/components/common/PageHero.astro";
+
+// --- DATA PRESTASI (Mock Data) ---
+// Nanti bisa dipindahkan ke JSON/CMS
+const achievements = [
+  {
+    title: "Juara 1 UX Design Competition Gemastik XV",
+    winner: "Tim Revo (Andi, Budi, Citra)",
+    event: "Puspresnas Kemendikbud RI",
+    year: "2024",
+    level: "Nasional",
+    category: "Akademik",
+    image:
+      "https://images.unsplash.com/photo-1565514020176-dbf2277470c7?q=80&w=1000&auto=format&fit=crop", // Ganti foto real
+  },
+  {
+    title: "Gold Medal - AI Innovation Summit",
+    winner: "Rian Saputra",
+    event: "Tokyo Invention Expo",
+    year: "2023",
+    level: "Internasional",
+    category: "Akademik",
+    image:
+      "https://images.unsplash.com/photo-1531545514256-b1400bc00f31?q=80&w=1000&auto=format&fit=crop",
+  },
+  {
+    title: "Juara 2 Lomba Karya Tulis Ilmiah (LKTI)",
+    winner: "Siti Aminah",
+    event: "Universitas Indonesia Scientific Fair",
+    year: "2024",
+    level: "Nasional",
+    category: "Akademik",
+    image:
+      "https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=1000&auto=format&fit=crop",
+  },
+  {
+    title: "Juara 1 Pencak Silat Seni Tunggal",
+    winner: "Fajar Nugraha",
+    event: "POMNAS (Pekan Olahraga Mahasiswa Nasional)",
+    year: "2023",
+    level: "Nasional",
+    category: "Non-Akademik",
+    image:
+      "https://images.unsplash.com/photo-1517466787929-bc90951d6dbb?q=80&w=1000&auto=format&fit=crop",
+  },
+  {
+    title: "Best Paper Award",
+    winner: "Dr. Fadhil Al Rabbani (Dosen)",
+    event: "IEEE International Conference on Data Science",
+    year: "2023",
+    level: "Internasional",
+    category: "Penelitian",
+    image:
+      "https://images.unsplash.com/photo-1544531586-fde5298cdd40?q=80&w=1000&auto=format&fit=crop",
+  },
+  {
+    title: "Finalis Hackathon Bank Indonesia",
+    winner: "Tim Fintech UIN (Dedi, Eka)",
+    event: "Bank Indonesia Hackathon",
+    year: "2024",
+    level: "Nasional",
+    category: "Akademik",
+    image:
+      "https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?q=80&w=1000&auto=format&fit=crop",
+  },
+];
+
+// Helper warna badge level
+const getLevelColor = (level: string) => {
+  switch (level) {
+    case "Internasional":
+      return "bg-blue-500/20 text-blue-400 border-blue-500/50";
+    case "Nasional":
+      return "bg-red-500/20 text-red-400 border-red-500/50";
+    default:
+      return "bg-emerald-500/20 text-emerald-400 border-emerald-500/50";
+  }
+};
+---
+
+<MainLayout
+  title="Prestasi Mahasiswa & Dosen"
+  description="Daftar pencapaian gemilang civitas akademika Teknik Informatika UIN Suska Riau."
+  isContentPage={true}
+>
+  <PageHero
+    title="Jejak Prestasi"
+    description="Bukti nyata dedikasi dan keunggulan civitas akademika di kancah Nasional dan Internasional."
+    bgImage="https://images.unsplash.com/photo-1561489413-985b06da5bee?q=80&w=2070&auto=format&fit=crop"
+  />
+
+  <section class="border-b border-slate-800 bg-slate-900/50">
+    <div class="container mx-auto px-6 py-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <span class="block text-3xl font-bold text-white mb-1">50+</span>
+          <span class="text-xs text-slate-400 uppercase tracking-wider"
+            >Nasional</span
+          >
+        </div>
+        <div>
+          <span class="block text-3xl font-bold text-white mb-1">12</span>
+          <span class="text-xs text-slate-400 uppercase tracking-wider"
+            >Internasional</span
+          >
+        </div>
+        <div>
+          <span class="block text-3xl font-bold text-white mb-1">25+</span>
+          <span class="text-xs text-slate-400 uppercase tracking-wider"
+            >HKI & Paten</span
+          >
+        </div>
+        <div>
+          <span class="block text-3xl font-bold text-white mb-1">Unggul</span>
+          <span class="text-xs text-slate-400 uppercase tracking-wider"
+            >Akreditasi</span
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-wrap justify-center gap-2 mb-12">
+        <button
+          class="px-4 py-2 rounded-full bg-emerald-600 text-white text-sm font-bold shadow-lg shadow-emerald-500/20"
+          >Semua</button
+        >
+        <button
+          class="px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-slate-300 hover:text-white hover:border-emerald-500 text-sm transition-all"
+          >Internasional</button
+        >
+        <button
+          class="px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-slate-300 hover:text-white hover:border-emerald-500 text-sm transition-all"
+          >Nasional</button
+        >
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {
+          achievements.map((item) => (
+            <div class="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-emerald-500/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-emerald-900/10 flex flex-col">
+              <div class="relative h-56 overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent z-10" />
+
+                <div
+                  class={`absolute top-4 left-4 z-20 px-3 py-1 rounded-full border text-[10px] font-bold uppercase tracking-wider ${getLevelColor(item.level)} bg-slate-950/80 backdrop-blur`}
+                >
+                  {item.level}
+                </div>
+
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700"
+                />
+              </div>
+
+              <div class="p-6 flex flex-col grow">
+                <div class="flex justify-between items-start mb-3">
+                  <span class="text-xs text-emerald-500 font-mono font-bold bg-emerald-900/20 px-2 py-1 rounded">
+                    {item.year}
+                  </span>
+                  <span class="text-[10px] text-slate-500 uppercase tracking-widest border border-slate-700 px-2 py-1 rounded">
+                    {item.category}
+                  </span>
+                </div>
+
+                <h3 class="text-lg font-bold text-white mb-2 leading-tight group-hover:text-emerald-400 transition-colors">
+                  {item.title}
+                </h3>
+
+                <p class="text-sm text-slate-400 mb-4 line-clamp-2">
+                  {item.event}
+                </p>
+
+                <div class="mt-auto pt-4 border-t border-slate-800 flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-xs border border-slate-700">
+                    🏆
+                  </div>
+                  <div>
+                    <p class="text-xs text-slate-500">Pemenang:</p>
+                    <p class="text-xs font-bold text-slate-200">
+                      {item.winner}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 border-t border-slate-800 bg-slate-900/30">
+    <div class="container mx-auto px-6">
+      <div
+        class="max-w-4xl mx-auto bg-gradient-to-br from-emerald-900/40 to-slate-950 border border-emerald-500/30 rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left"
+      >
+        <div>
+          <h3 class="text-2xl font-bold text-white mb-2">
+            Baru Saja Memenangkan Kompetisi?
+          </h3>
+          <p class="text-slate-400">
+            Laporkan prestasimu agar tercatat di database prodi dan mendapatkan
+            apresiasi serta poin SKPI.
+          </p>
+        </div>
+        <a
+          href="#"
+          class="px-8 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-lg shadow-lg shadow-emerald-900/20 hover:scale-105 transition-transform whitespace-nowrap"
+        >
+          Lapor Prestasi
+        </a>
+      </div>
+    </div>
+  </section>
+</MainLayout>

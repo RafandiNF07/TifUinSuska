@@ -1,27 +1,256 @@
 ---
-import MainLayout from "../../layouts/MainLayout.astro";
-import PageHero from "../../components/common/PageHero.astro";
-import VisionMission from "../../components/profile/VisiMisi.astro";
-import History from "../../components/profile/History.astro";
-import gedungBg from "@/assets/images/gedung-lama.jpg";
-import { visi, misi, sejarah } from "../../data/profil";
+// src/pages/profil/index.astro
+import MainLayout from "@/layouts/MainLayout.astro";
+import PageHero from "@/components/common/PageHero.astro";
+import { Image } from "astro:assets";
+
+import heroImage from "@/assets/images/gedung.png";
+import aboutImage from "@/assets/images/dosen.jpg";
 ---
 
 <MainLayout
-  title="Profil Program Studi"
-  description="Sejarah, Visi, dan Misi Teknik Informatika UIN Suska Riau"
+  title="Tentang Prodi | Teknik Informatika"
+  description="Sejarah, Visi, Misi dan Tujuan Program Studi Teknik Informatika UIN Suska Riau."
   isContentPage={true}
 >
   <PageHero
-    title="Profil Program Studi"
-    description="Mengenal lebih dekat sejarah dan arah tujuan Teknik Informatika UIN Suska Riau."
-    bgImage={gedungBg.src}
+    title="Tentang Program Studi"
+    description="Membangun peradaban digital yang berlandaskan nilai-nilai Keislaman."
+    bgImage={heroImage.src}
+    ;
   />
 
-  <div class="container mx-auto px-6 py-3 md:py-4">
-    <div class="max-w-5xl mx-auto">
-      <VisionMission visi={visi} misi={misi} />
-      <History title={sejarah.title} paragraphs={sejarah.paragraphs} />
+  <section class="py-16 md:py-24 overflow-hidden">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+        <div class="w-full lg:w-1/2 relative group">
+          <div
+            class="absolute -inset-4 bg-emerald-500/20 rounded-2xl rotate-3 group-hover:rotate-1 transition-transform duration-500"
+          >
+          </div>
+          <div
+            class="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-800"
+          >
+            <img
+              src={aboutImage.src}
+              alt="Suasana Akademik TIF UIN Suska"
+              class="w-full h-auto object-cover transform group-hover:scale-105 transition duration-700"
+            />
+          </div>
+        </div>
+
+        <div class="w-full lg:w-1/2">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="h-px w-10 bg-emerald-500"></span>
+            <span
+              class="text-emerald-500 font-bold uppercase tracking-widest text-sm"
+              >Sejarah Singkat</span
+            >
+          </div>
+          <h2
+            class="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight"
+          >
+            Perjalanan Menuju <br />
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400"
+              >Keunggulan Digital</span
+            >
+          </h2>
+          <div class="space-y-4 text-slate-400 leading-relaxed text-lg">
+            <p>
+              Program Studi Teknik Informatika UIN Sultan Syarif Kasim Riau
+              berdiri sebagai respons terhadap kebutuhan zaman akan ahli
+              teknologi yang tidak hanya cakap secara teknis, tetapi juga
+              memiliki fondasi spiritual yang kuat.
+            </p>
+            <p>
+              Sejak didirikan, kami terus bertransformasi mengikuti perkembangan
+              teknologi global, mulai dari kurikulum berbasis kompetensi hingga
+              penerapan teknologi cerdas (AI & IoT), tanpa meninggalkan
+              identitas kami sebagai kampus Islami Madani.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
+
+  <section
+    class="py-16 md:py-24 bg-slate-900/50 border-y border-slate-800 relative"
+  >
+    <div
+      class="absolute inset-0 opacity-[0.03]"
+      style="background-image: radial-gradient(#10b981 1px, transparent 1px); background-size: 32px 32px;"
+    >
+    </div>
+
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="grid lg:grid-cols-3 gap-8">
+        <div
+          class="lg:col-span-1 bg-gradient-to-br from-emerald-900/40 to-slate-900 border border-emerald-500/30 p-8 rounded-2xl shadow-xl flex flex-col justify-center"
+        >
+          <div
+            class="w-12 h-12 bg-emerald-500/20 rounded-lg flex items-center justify-center mb-6 text-emerald-400"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+              ></path></svg
+            >
+          </div>
+          <h3 class="text-2xl font-bold text-white mb-4">Visi Kami</h3>
+          <p class="text-emerald-100 text-lg leading-relaxed italic font-serif">
+            "Terwujudnya Program Studi Teknik Informatika yang gemilang dan
+            terbilang dalam mengintegrasikan keilmuan informatika dengan
+            nilai-nilai Keislaman untuk peradaban masa depan."
+          </p>
+        </div>
+
+        <div
+          class="lg:col-span-2 bg-slate-950 border border-slate-800 p-8 rounded-2xl hover:border-slate-700 transition-colors"
+        >
+          <h3
+            class="text-2xl font-bold text-white mb-6 flex items-center gap-3"
+          >
+            <span class="w-2 h-8 bg-emerald-500 rounded-full"></span>
+            Misi Program Studi
+          </h3>
+          <ul class="grid md:grid-cols-2 gap-6">
+            {
+              [
+                "Menyelenggarakan pendidikan dan pengajaran informatika yang terintegrasi dengan Islam.",
+                "Mengembangkan penelitian inovatif berbasis teknologi cerdas dan kearifan lokal.",
+                "Melaksanakan pengabdian kepada masyarakat berbasis teknologi tepat guna.",
+                "Membangun kerjasama strategis dengan industri dan institusi global.",
+              ].map((misi, index) => (
+                <li class="flex gap-4">
+                  <span class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-800 border border-slate-700 text-emerald-500 font-bold flex items-center justify-center text-sm">
+                    {index + 1}
+                  </span>
+                  <p class="text-slate-400 text-sm leading-relaxed">{misi}</p>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl font-bold text-white mb-3">Dokumen Resmi</h2>
+        <p class="text-slate-400">
+          Unduh dokumen strategis dan sertifikat akreditasi program studi.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <a
+          href="#"
+          class="group flex items-center gap-4 p-4 bg-slate-900 border border-slate-800 rounded-xl hover:border-emerald-500/50 hover:bg-slate-800 transition-all"
+        >
+          <div
+            class="w-12 h-12 bg-red-500/10 text-red-500 rounded-lg flex items-center justify-center group-hover:bg-red-500 group-hover:text-white transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+              ></path></svg
+            >
+          </div>
+          <div>
+            <h4
+              class="text-white font-bold text-sm group-hover:text-emerald-400 transition-colors"
+            >
+              Renstra 2025-2030
+            </h4>
+            <span class="text-xs text-slate-500">PDF Document • 2.4 MB</span>
+          </div>
+        </a>
+
+        <a
+          href="#"
+          class="group flex items-center gap-4 p-4 bg-slate-900 border border-slate-800 rounded-xl hover:border-emerald-500/50 hover:bg-slate-800 transition-all"
+        >
+          <div
+            class="w-12 h-12 bg-blue-500/10 text-blue-500 rounded-lg flex items-center justify-center group-hover:bg-blue-500 group-hover:text-white transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg
+            >
+          </div>
+          <div>
+            <h4
+              class="text-white font-bold text-sm group-hover:text-emerald-400 transition-colors"
+            >
+              Sertifikat Akreditasi
+            </h4>
+            <span class="text-xs text-slate-500">Unggul (2024-2029)</span>
+          </div>
+        </a>
+
+        <a
+          href="#"
+          class="group flex items-center gap-4 p-4 bg-slate-900 border border-slate-800 rounded-xl hover:border-emerald-500/50 hover:bg-slate-800 transition-all"
+        >
+          <div
+            class="w-12 h-12 bg-emerald-500/10 text-emerald-500 rounded-lg flex items-center justify-center group-hover:bg-emerald-500 group-hover:text-white transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+              ></path></svg
+            >
+          </div>
+          <div>
+            <h4
+              class="text-white font-bold text-sm group-hover:text-emerald-400 transition-colors"
+            >
+              Buku Pedoman
+            </h4>
+            <span class="text-xs text-slate-500">Akademik T.A 2025</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
 </MainLayout>

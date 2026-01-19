@@ -8,8 +8,10 @@ export const menuItems = [
     path: "/profil", 
     children: [
       { title: "Profil Prodi", path: "/profil" },
-      { title: "Visi & Misi", path: "/profil/visi-misi" },
       { title: "Dosen & Staff", path: "/profil/dosen" },
+      { title: "Struktur Organisasi", path: "/profil/struktur" },
+      { title: "Fasilitas", path: "/profil/fasilitas" },
+      { title: "Prestasi", path: "/profil/prestasi" },
     ]
   },
   { 

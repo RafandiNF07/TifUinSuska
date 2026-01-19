@@ -8,15 +8,11 @@ interface Props {
   bgImage?: string;
 }
 
-const {
-  title,
-  description,
-  bgImage = "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop",
-} = Astro.props;
+const { title, description, bgImage = "" } = Astro.props;
 ---
 
 <section
-  class="relative pt-28 pb-10 md:pt-36 md:pb-12 overflow-hidden bg-slate-950"
+  class="relative pt-28 pb-8 md:pt-36 md:pb-10 overflow-hidden bg-slate-900"
 >
   <div class="absolute inset-0 z-0">
     <img
